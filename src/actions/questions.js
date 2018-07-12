@@ -18,9 +18,11 @@ function saveQuestion (question) {
   }
 }
 
-function saveQuestionAnwer () {
+function saveQuestionAnwer ({ authedUser, qid, answer}) {
   return {
     type: SAVE_QUESTION_ANSWER,
-    question
+    authedUser,
+    qid,
+    answer
   }
 }
