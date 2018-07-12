@@ -1,5 +1,3 @@
-import { saveQuestionAnswer } from '../utils/api'
-
 export const GET_USERS = 'GET_USERS'
 export const SAVE_QUESTION_ANSWER = 'SAVE_QUESTION_ANSWER'
 
