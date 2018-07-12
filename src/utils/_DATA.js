@@ -129,6 +129,13 @@ export function _getUsers () {
   })
 }
 
+//GETS THE USER SELECTED
+export function _getSelectUser () {
+  return new Promise((res, rej) => {
+    setTimeout(() => res(selectUser), 1000)
+  })
+}
+
 export function _getQuestions () {
   return new Promise((res, rej) => {
     setTimeout(() => res({...questions}), 1000)
@@ -149,6 +156,15 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
       text: optionTwoText,
     }
   }
+}
+
+//SAVES THE SELECTED USER THROUGHOUT APP
+export function _saveSelectedUser (user) {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      user = selectUser;
+      res(user)}, 1000)
+  })
 }
 
 export function _saveQuestion (question) {
