@@ -1,6 +1,6 @@
 import averie from '../images/averie-woodard.jpg'
 import ayo from '../images/ayo-ogun.jpg'
-import erik from '../erik-luca.jpg'
+import erik from '../images/erik-luca.jpg'
 
 let users = {
   averiewoodard: {
@@ -18,7 +18,7 @@ let users = {
   ayoogun: {
     id: 'ayoogun',
     name: 'Ayo Ogun',
-    avatarURL: ago,
+    avatarURL: ayo,
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -118,6 +118,9 @@ let questions = {
     }
   },
 }
+
+//CREATES SELECT USER VARIABLE TO ASSIGN TO A USER
+let selectUser = null
 
 function generateUID () {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)

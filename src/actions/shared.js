@@ -4,7 +4,7 @@ import { getQuestions } from '../actions/questions'
 import { setAuthedUser } from '../actions/authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
-//hard coded user id
+//HARD CODED AUTHED USER
 const AUTHED_ID = 'averiewoodard'
 
 //GETS handInitialData FROM API AND APPLIES IT TO ACTION CREATORS

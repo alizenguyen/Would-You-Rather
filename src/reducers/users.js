@@ -7,8 +7,6 @@ export default function user (state = {}, action) {
         ...state,
         ...action.users
       }
-    default: 
-      return state
     case SAVE_QUESTION_ANSWER: 
       return {
         ...state,
