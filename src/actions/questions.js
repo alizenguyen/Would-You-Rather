@@ -2,7 +2,6 @@ import { saveQuestionAnswer } from '../utils/api'
 
 export const GET_QUESTIONS = 'GET_QUESTIONS'
 export const SAVE_QUESTION = 'SAVE_QUESTION'
-export const SAVE_QUESTION_ANSWER = 'SAVE_QUESTION_ANSWER'
 
 function getQuestions (questions) {
   return {
