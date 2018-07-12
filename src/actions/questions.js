@@ -1,4 +1,4 @@
-import { saveQuestion, saveQuestionAnswer } from '../utils/api'
+import { saveQuestionAnswer } from '../utils/api'
 
 export const GET_QUESTIONS = 'GET_QUESTIONS'
 export const SAVE_QUESTION = 'SAVE_QUESTION'
@@ -15,14 +15,5 @@ function saveQuestion (question) {
   return {
     type: SAVE_QUESTION,
     question
-  }
-}
-
-function saveQuestionAnwer ({ authedUser, qid, answer}) {
-  return {
-    type: SAVE_QUESTION_ANSWER,
-    authedUser,
-    qid,
-    answer
   }
 }

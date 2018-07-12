@@ -1,4 +1,4 @@
-import { GET_QUESTIONS, SAVE_QUESTION, SAVE_QUESTION_ANSWER } from '../actions/questions'
+import { GET_QUESTIONS, SAVE_QUESTION } from '../actions/questions'
 
 export default function tweets (state = {}, action) {
   switch(action.type) {
@@ -12,12 +12,5 @@ export default function tweets (state = {}, action) {
         ...state,
         [action.question.id]: action.question,
       }
-    case SAVE_QUESTION_ANSWER: 
-      return {
-        ...state,
-        [action.question.id]: action.question,
-      }
-    default: 
-      return state
   }
 }
