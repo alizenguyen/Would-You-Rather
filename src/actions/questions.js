@@ -1,4 +1,4 @@
-import { _getQuestions, _saveQuestion, _saveQuestionAnswer } from '../utils/_DATA'
+import { saveQuestion, saveQuestionAnswer } from '../utils/api'
 
 export const GET_QUESTIONS = 'GET_QUESTIONS'
 export const SAVE_QUESTION = 'SAVE_QUESTION'
