@@ -7,13 +7,14 @@ import { showLoading, hideLoading } from 'react-redux-loading'
 //hard coded user id
 const AUTHED_ID = 'averiewoodard'
 
+//GETS handInitialData FROM API AND APPLIES IT TO ACTION CREATORS
 export function handleInitialData () {
   return (dispatch) => {
     dispatch(showLoading())
     return getInitialData()
-      .then(({ users, tweets })=>{
-        dispatch(receiveUsers(users))
-        dispatch(receiveTweets(tweets))
+      .then(({ users, questions })=>{
+        dispatch(getUsers(users))
+        dispatch(getQuestions(questions))
         dispatch(setAuthedUser(AUTHED_ID))
         dispatch(hideLoading())
       })
