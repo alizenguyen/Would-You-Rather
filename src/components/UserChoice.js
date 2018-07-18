@@ -102,9 +102,11 @@ class UserChoice extends Component {
           }}
         />
           <div className="info-box">
-            <h1 className="signin-title">SIGN IN</h1>
+            <h1 className="signin-text">WOULD YOU RATHER</h1>
+            <p className="signin-text">Ask a question. Get Answers.</p>
+            <h3 className="signin-text">Please sign in to contine.</h3>
             <div className="dropdown">
-              <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button className="user-button dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 SELECT USER
               </button>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
