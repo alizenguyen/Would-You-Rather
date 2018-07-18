@@ -24,8 +24,3 @@ li {
   padding: 10px;
   text-decoration: none;
 }
-
-li:hover {
-  color: #ff9f1c;
-  cursor: pointer;
-}
