@@ -91,65 +91,31 @@ class UserChoice extends Component {
                 }
               }
             },
-            interactivity: {
-              detect_on: "canvas",
-              events: {
-                onhover: {
-                  enable: true,
-                  mode: "repulse"
-                },
-                onclick: {
-                  enable: true,
-                  mode: "push"
-                },
-                resize: true
-              },
-              modes: {
-                grab: {
-                  distance: 400,
-                  line_linked: {
-                    opacity: 1
-                  }
-                },
-                bubble: {
-                  distance: 400,
-                  size: 40,
-                  duration: 2,
-                  opacity: 8,
-                  speed: 3
-                },
-                repulse: {
-                  distance: 200,
-                  duration: 0.4
-                },
-                push: {
-                  particles_nb: 4
-                },
-                remove: {
-                  particles_nb: 2
-                }
-              }
-            },
             retina_detect: true
           }}
           style={{
             width: '100%',
             position: 'absolute',
+            top: 0,
             left: 0,
+            zIndex: -1,
           }}
         />
-        <div className="dropdown">
-          <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Pick A User
-          </button>
-          <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            {Object.keys(users).map(user => (
-              <li className="user-dropdown" key={users[user].id}>
-                <a> {users[user].name} </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+          <div className="info-box">
+            <h1 className="signin-title">SIGN IN</h1>
+            <div className="dropdown">
+              <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                SELECT USER
+              </button>
+              <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {Object.keys(users).map(user => (
+                  <li className="user-dropdown" key={users[user].id}>
+                    <a> {users[user].name} </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
       </div>
     )
   }
