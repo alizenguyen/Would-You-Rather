@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { loadingUsers } from '../actions/users'
 import '../css/UserChoice.css'
 import Particles from 'react-particles-js'
+import logo from '../images/wyr_logo-01.png'
 
 class UserChoice extends Component {
   state = {
@@ -102,8 +103,7 @@ class UserChoice extends Component {
           }}
         />
           <div className="info-box">
-            <h1 className="signin-text">WOULD YOU RATHER</h1>
-            <p className="signin-text">Ask a question. Get Answers.</p>
+            <img className="logo-image" src={logo} />
             <h3 className="signin-text">Please sign in to contine.</h3>
             <div className="dropdown">
               <button className="user-button dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
