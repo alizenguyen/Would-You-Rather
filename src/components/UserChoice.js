@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { loadingUsers } from '../actions/users'
+import { saveAuthedUser } from '../actions/authedUser'
 import '../css/UserChoice.css'
 import Particles from 'react-particles-js'
 import logo from '../images/wyr_logo-01.png'
@@ -8,7 +9,8 @@ import world from '../images/world-01.png'
 
 class UserChoice extends Component {
   state = {
-    users: {}
+    users: {},
+    selectUser: null
   }
 
   //CALLS getUsers() FUNCTION AND SETS THE STATE AS THE RESPONSE
@@ -16,6 +18,11 @@ class UserChoice extends Component {
     this.props.getUsers().then(response => {
       this.setState({ users: response.users})
     })
+  }
+
+  saveUserChoice = (e, user) => {
+    e.preventDefault();
+    console.log(user);
   }
 
   render () {
@@ -114,7 +121,10 @@ class UserChoice extends Component {
               </button>
               <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 {Object.keys(users).map(user => (
-                  <li className="user-dropdown" key={users[user].id}>
+                  <li 
+                    className="user-dropdown" 
+                    key={users[user].id}
+                    onClick={(e) => this.saveUserChoice(e, users[user])}>
                     <a> {users[user].name} </a>
                   </li>
                 ))}
@@ -136,6 +146,7 @@ const mapStateToProps = state => {
 //GRABS THE loadingUser() FUNCTION FROM ACTIONS TO BE ABLE TO USE IN THIS COMPONENT
 const mapDispatchToProps = dispatch => {
   return {
+    selectedUser: (user) => dispatch(saveAuthedUser(user)),
     getUsers: () => dispatch(loadingUsers())
   }
 }

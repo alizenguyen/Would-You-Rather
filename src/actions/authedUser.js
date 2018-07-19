@@ -1,8 +1,18 @@
+import { _saveSelectedUser } from '../utils/_DATA'
+
 export const SET_AUTHED_USER = 'SET_AUTHED_USER'
 
-export function setAuthedUser (id) {
+//???BY ID OR USER???
+export function setAuthedUser (user) {
   return {
     type: SET_AUTHED_USER,
-    id
+    user
   }
 }
+
+export const saveAuthedUser = user => {
+  return dispatch => {
+    return _saveSelectedUser(user).then(response => dispatch(setAuthedUser(response)));
+  }
+}
+

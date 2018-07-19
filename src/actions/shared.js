@@ -1,7 +1,7 @@
 import { getInitialData } from '../utils/api'
 import { loadingUsers } from '../actions/users'
 import { getQuestions } from '../actions/questions'
-import { setAuthedUser } from '../actions/authedUser'
+import { saveAuthedUser } from '../actions/authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
 //HARD CODED AUTHED USER
@@ -15,7 +15,7 @@ export function handleInitialData () {
       .then(({ users, questions })=>{
         dispatch(loadingUsers(users))
         dispatch(getQuestions(questions))
-        dispatch(setAuthedUser(AUTHED_ID))
+        dispatch(saveAuthedUser(AUTHED_ID))
         dispatch(hideLoading())
       })
   }
