@@ -2,8 +2,7 @@ import { _saveSelectedUser } from '../utils/_DATA'
 
 export const SET_AUTHED_USER = 'SET_AUTHED_USER'
 
-//???BY ID OR USER???
-export function setAuthedUser (user) {
+function setAuthedUser (user) {
   return {
     type: SET_AUTHED_USER,
     user
