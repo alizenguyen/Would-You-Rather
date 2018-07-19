@@ -20,9 +20,11 @@ class UserChoice extends Component {
     })
   }
 
+  //WILL SAVE SELECTED USER TO DATABASE
   saveUserChoice = (e, user) => {
     e.preventDefault();
     console.log(user);
+    this.props.selectedUser(user);
   }
 
   render () {

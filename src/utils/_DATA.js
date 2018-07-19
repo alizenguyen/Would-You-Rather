@@ -165,7 +165,7 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
 export function _saveSelectedUser (user) {
   return new Promise((res, rej) => {
     setTimeout(() => {
-      user = selectUser;
+      selectUser = user;
       res(user)}, 1000)
   })
 }
