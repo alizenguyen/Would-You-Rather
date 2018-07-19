@@ -104,6 +104,7 @@ class UserChoice extends Component {
         />
           <div className="info-box">
             <img className="logo-image" src={logo} />
+            <p className="signin-text">Ask Questions. Get Answers. Earn Points.</p>
             <h3 className="signin-text">Please sign in to contine.</h3>
             <div className="dropdown">
               <button className="user-button dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
