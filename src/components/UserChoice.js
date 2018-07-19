@@ -33,7 +33,7 @@ class UserChoice extends Component {
                 }
               },
               color: {
-                value: "#ffffff"
+                value: "#41ead4"
               },
               shape: {
                 type: "circle",
@@ -73,7 +73,7 @@ class UserChoice extends Component {
               line_linked: {
                 enable: true,
                 distance: 150,
-                color: "#ffffff",
+                color: "#41ead4",
                 opacity: 0.4,
                 width: 1
               },
