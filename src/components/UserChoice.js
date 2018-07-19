@@ -4,6 +4,7 @@ import { loadingUsers } from '../actions/users'
 import '../css/UserChoice.css'
 import Particles from 'react-particles-js'
 import logo from '../images/wyr_logo-01.png'
+import world from '../images/world-01.png'
 
 class UserChoice extends Component {
   state = {
@@ -105,6 +106,7 @@ class UserChoice extends Component {
           <div className="info-box">
             <img className="logo-image" src={logo} />
             <p className="tagline">Ask questions. Get answers. Earn points.</p>
+            <img className="world-image" src={world} />
             <h3 className="signin-text">Please sign in to continue.</h3>
             <div className="dropdown">
               <button className="user-button dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

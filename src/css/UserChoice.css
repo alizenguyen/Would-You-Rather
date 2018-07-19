@@ -5,7 +5,7 @@ body {
 .info-box {
   border-radius: 5px;
   margin-top: 20%;
-  padding: 60px 30px 60px 30px;
+  padding: 60px 30px 65px 30px;
   width: 100%;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -24,7 +24,15 @@ body {
   font-size: 1.5rem;
   font-weight: 300;
   letter-spacing: 5px;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
+}
+
+.world-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  height: 150px;
 }
 
 .signin-text {
@@ -41,6 +49,8 @@ body {
   color: #fff;
   background-color: #ff9f1c;
   border-radius: 5px;
+  border: none;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 .dropdown-menu {
