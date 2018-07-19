@@ -126,6 +126,7 @@ class UserChoice extends Component {
                   <li 
                     className="user-dropdown" 
                     key={users[user].id}
+                    //EVENT HANDLER TO SAVE USER
                     onClick={(e) => this.saveUserChoice(e, users[user])}>
                     <a> {users[user].name} </a>
                   </li>
@@ -145,7 +146,7 @@ const mapStateToProps = state => {
   }
 }
 
-//GRABS THE loadingUser() FUNCTION FROM ACTIONS TO BE ABLE TO USE IN THIS COMPONENT
+//GRABS THE loadingUser() and saveAuthedUser FUNCTION FROM ACTIONS TO BE ABLE TO USE IN THIS COMPONENT
 const mapDispatchToProps = dispatch => {
   return {
     selectedUser: (user) => dispatch(saveAuthedUser(user)),
