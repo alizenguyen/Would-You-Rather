@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import Nav from './Nav'
 import { connect } from 'react-redux'
 import UserChoice from './UserChoice'
+import Question from './Question'
 import { getAuthedUser } from '../actions/authedUser'
 import { getQuestions } from '../actions/questions'
 import { loadingUsers } from '../actions/users'
@@ -9,6 +10,23 @@ import { loadingUsers } from '../actions/users'
 class UserHome extends Component {
   state = {
     questions: []
+  }
+
+  renderUnansweredQuestions = (users, questions) => {
+    {Object.keys(users).length > 0 && questions.length > 0 ? (
+      questions.map(question => (
+        <Question
+          question={question}
+          key={question.id}
+          author={users[question.author]}
+        />
+      ))
+    ) : (
+      <div className="not-available">
+        No questions are available. <br />
+        <em>Please ask a new question.</em>
+      </div>
+    )}
   }
 
   render() {
@@ -20,8 +38,8 @@ class UserHome extends Component {
       <Fragment>
         <Nav />
         <div>
-          <button>Unaswered Question</button>
-          <button>Answered Question</button>
+          <button onClick={this.renderUnansweredQuestion(this.props.users, this.state.questions)}>Unaswered Questions</button>
+          <button>Answered Questions</button>
         </div>
       </Fragment>
     )
@@ -30,7 +48,9 @@ class UserHome extends Component {
 
 const mapStateToProps = state => {
   return {
-    authedUser: state.authedUser
+    users: state.users,
+    authedUser: state.authedUser,
+    questions: state.questions
   }
 }
 
