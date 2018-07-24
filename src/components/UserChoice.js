@@ -21,10 +21,12 @@ class UserChoice extends Component {
   }
 
   //WILL SAVE SELECTED USER TO DATABASE
-  saveUserChoice = (e, user) => {
+  saveUserChoice = (e, user, id) => {
     e.preventDefault();
     console.log(user);
     this.props.selectedUser(user);
+    //PART OF REACT ROUTER DOM
+    this.props.history.push(`/home/${id}`)
   }
 
   render () {
@@ -112,28 +114,28 @@ class UserChoice extends Component {
             zIndex: -1,
           }}
         />
-          <div className="info-box">
-            <img className="logo-image" src={logo} />
-            <p className="tagline">Ask questions. Get answers. Earn points.</p>
-            <img className="world-image" src={world} />
-            <h3 className="signin-text">Please sign in to continue.</h3>
-            <div className="dropdown">
-              <button className="user-button dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                SELECT USER
-              </button>
-              <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                {Object.keys(users).map(user => (
-                  <li 
-                    className="user-dropdown" 
-                    key={users[user].id}
-                    //EVENT HANDLER TO SAVE USER
-                    onClick={(e) => this.saveUserChoice(e, users[user])}>
-                    <a> {users[user].name} </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <div className="info-box">
+          <img className="logo-image" src={logo} />
+          <p className="tagline">Ask questions. Get answers. Earn points.</p>
+          <img className="world-image" src={world} />
+          <h3 className="signin-text">Please sign in to continue.</h3>
+          <div className="dropdown">
+            <button className="user-button dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              SELECT USER
+            </button>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              {Object.keys(users).map(user => (
+                <li 
+                  className="user-dropdown" 
+                  key={users[user].id}
+                  //EVENT HANDLER TO SAVE USER
+                  onClick={(e) => this.saveUserChoice(e, users[user], users[user].id)}>
+                  <a> {users[user].name} </a>
+                </li>
+              ))}
+            </ul>
           </div>
+        </div>
       </div>
     )
   }

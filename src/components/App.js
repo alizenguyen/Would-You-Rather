@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import UserChoice from './UserChoice'
+import UserHome from './UserHome'
+import LoadingBar from 'react-redux-loading'
 import '../css/App.css';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
@@ -12,11 +15,29 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <UserChoice />
-      </div>
+      <Router>
+        <Fragment>
+          <LoadingBar />
+          <div className="container">
+              {this.props.loading === true 
+                ? null 
+                : <div>
+                    <Route path='/' exact component={UserChoice} />
+                    <Route path='/home/:id' component={UserHome} />
+                  </div>
+                }
+          </div>
+        </Fragment>
+      </Router>
     );
   }
 }
 
-export default connect()(App);
+function mapStateToProps ({ selectUser }) {
+  return {
+    //sets a new property onto the component
+    loading: selectUser === null
+  }
+}
+
+export default connect(mapStateToProps)(App);
