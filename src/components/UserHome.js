@@ -30,6 +30,8 @@ class UserHome extends Component {
               .then(getUsers())
               .then(() => this.setState({ loading: false }));
           } 
+        } else {
+          alert("Apologies for the Error. Please select again.")
         }
       });
   }
