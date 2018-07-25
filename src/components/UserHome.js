@@ -5,12 +5,33 @@ import { Redirect } from 'react-router-dom'
 import UserChoice from './UserChoice'
 import Question from './Question'
 import { getAuthedUser } from '../actions/authedUser'
-import { getQuestions } from '../actions/questions'
+import { loadingQuestions } from '../actions/questions'
 import { loadingUsers } from '../actions/users'
 
 class UserHome extends Component {
   state = {
+    loading: true,
     showUnansweredQuestions: true,
+  }
+
+  componentDidMount() {
+    const { getSelectedUser, getQuestions, getUsers } = this.props;
+
+    //CHECKS TO SEE IF COMPONENT IS MOUNTED BEFORE GETTING DATA
+    this.mounted = true;
+
+      // GETS CURRENT USER
+      getSelectedUser().then(response => {
+        //CHECKS TO SEE IF COMPONENT IS MOUNTED BEFORE GETTING DATA
+        if (this.mounted) {
+          // IF USER EXISTS, THEN LOAD QUESTIONS AND USERS AND SET loading: false
+          if (response.user) {
+            getQuestions()
+              .then(getUsers())
+              .then(() => this.setState({ loading: false }));
+          } 
+        }
+      });
   }
 
   renderQuestions = (e) => {
@@ -21,14 +42,20 @@ class UserHome extends Component {
     }
   }
 
+  componentWillUnmount () {
+    this.mounted = false;
+  }
+
   render() {
 
     const { users, questions, authedUser } = this.props
-    const { showUnansweredQuestions } = this.state
+    const { loading, showUnansweredQuestions } = this.state
 
-    // if (authedUser === null) {
-    //   return <Redirect to='/' />
-    // }
+    console.log(loading)
+
+    if (loading === true && authedUser === null) {
+      return <Redirect to='/' />
+    }
 
     const unAnsweredQuestions = Object.values(questions).filter((question) => 
       !question.optionOne.votes.includes(authedUser) && !question.optionTwo.votes.includes(authedUser)) 
@@ -77,7 +104,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getSelectedUser: () => dispatch(getAuthedUser()),
-    getQuestions: () => dispatch(getQuestions()),
+    getQuestions: () => dispatch(loadingQuestions()),
     getUsers: () => dispatch(loadingUsers())
   }
 }

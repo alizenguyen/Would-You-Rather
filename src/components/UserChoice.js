@@ -14,13 +14,6 @@ class UserChoice extends Component {
     selectUser: null,
   }
 
-  //CALLS getUsers() FUNCTION AND SETS THE STATE AS THE RESPONSE
-  componentDidMount() {
-    this.props.getUsers().then(response => {
-      this.setState({ users: response.users})
-    })
-  }
-
   //WILL SAVE SELECTED USER TO DATABASE
   saveUserChoice = (e, user, id) => {
     e.preventDefault();
@@ -29,7 +22,7 @@ class UserChoice extends Component {
   }
 
   render () {
-    const { users } = this.state
+    const { users } = this.props
     
     return (
       <div>
@@ -151,7 +144,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     selectedUser: (user) => dispatch(saveAuthedUser(user)),
-    getUsers: () => dispatch(loadingUsers())
   }
 }
 
