@@ -9,37 +9,47 @@ import { loadingUsers } from '../actions/users'
 
 class UserHome extends Component {
   state = {
-    questions: []
+    authedUser: null,
+    showUnansweredQuestions: true,
   }
 
-  renderUnansweredQuestions = (users, questions) => {
-    {Object.keys(users).length > 0 && questions.length > 0 ? (
-      questions.map(question => (
-        <Question
-          question={question}
-          key={question.id}
-          author={users[question.author]}
-        />
-      ))
-    ) : (
-      <div className="not-available">
-        No questions are available. <br />
-        <em>Please ask a new question.</em>
-      </div>
-    )}
+  renderQuestions = (e) => {
+    if (this.showUnansweredQuestions === true) {
+      this.setState({showUnasweredQuestions: false})
+    } else {
+      this.setState({showUnasweredQuestions: true})
+    }
   }
 
   render() {
-    if (!this.props.authedUser) {
-      return <UserChoice />;
-    }
+
+    const { users, questions, authedUser, unAnsweredQuestions, answeredQuestions } = this.props
+    const { showUnansweredQuestions } = this.state
 
     return (
       <Fragment>
         <Nav />
         <div>
-          <button onClick={this.renderUnansweredQuestion(this.props.users, this.state.questions)}>Unaswered Questions</button>
-          <button>Answered Questions</button>
+          <button onClick={(e) => this.renderQuestions(e)}>Unaswered Questions</button>
+          <button onClick={(e) => this.renderQuestions(e)}>Answered Questions</button>
+        </div>
+        <div>
+          {showUnansweredQuestions === true ? (
+            unAnsweredQuestions.map(question => (
+              <Question 
+                key={question.id}
+                author={question.author}
+                optionOne={question.optionOne.text}
+                optionTwo={question.optionTwo.text}
+                />
+            ))) 
+            : answeredQuestions.map(question => (
+              <Question 
+                key={question.id}
+                author={question.author}
+                />
+            ))
+          }
         </div>
       </Fragment>
     )
@@ -47,7 +57,18 @@ class UserHome extends Component {
 }
 
 const mapStateToProps = state => {
+  const unAnsweredQuestions = Object.values(state.questions).filter((question) => 
+      !question.optionOne.votes.includes(state.authedUser) && !question.optionTwo.votes.includes(state.authedUser)) 
+
+    console.log(unAnsweredQuestions)
+    console.log(state.selectUser)
+
+    const answeredQuestions = Object.values(state.questions).filter((question) =>
+        question.optionOne.votes.includes(state.authedUser) || question.optionTwo.votes.includes(state.authedUser))
+
   return {
+    unAnsweredQuestions: unAnsweredQuestions,
+    answeredQuestions: answeredQuestions,
     users: state.users,
     authedUser: state.authedUser,
     questions: state.questions

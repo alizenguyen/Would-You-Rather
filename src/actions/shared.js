@@ -12,7 +12,7 @@ export function handleInitialData () {
       .then(({ users, questions, selectUser })=>{
         dispatch(loadingUsers(users))
         dispatch(getQuestions(questions))
-        dispatch(saveAuthedUser(selectUser))
+        //dispatch(saveAuthedUser(selectUser))
         dispatch(hideLoading())
       })
   }

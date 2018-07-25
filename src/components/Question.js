@@ -3,14 +3,14 @@ import React, { Component } from 'react'
 class Question extends Component {
   render() {
     return(
-      <div>
+      <form>
         <div>{this.props.author} asks:</div>
         <h3> Would you rather... </h3>
-        <select>
-          <option>{this.props.optionOne}</option>
-          <option>{this.props.optionTwo}</option>
-        </select>
-      </div>  
+        <input type='radio' />
+        <label> {this.props.optionOne} </label>
+        <input type='radio' /> 
+        <label>{this.props.optionTwo}</label>
+      </form>  
     )
   }
 }
