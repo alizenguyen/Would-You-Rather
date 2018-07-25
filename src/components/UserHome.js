@@ -58,9 +58,9 @@ class UserHome extends Component {
     console.log('Unanswered: ' + Object.values(unAnsweredQuestions))
     console.log('Answered: ' + Object.values(answeredQuestions))
 
-    if (loading === true && authedUser === null) {
-      return <Redirect to='/' />
-    }
+    // if (loading === true && authedUser === null) {
+    //   return <Redirect to='/' />
+    // }
 
     return (
       <Fragment>

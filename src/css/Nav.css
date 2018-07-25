@@ -1,0 +1,40 @@
+.full-nav {
+  margin-top: 30px;
+}
+
+.nav-logo {
+  float: left;
+  width: 350px;
+}
+
+nav {
+  float: right;
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-top: 10px;
+}
+
+li {
+  margin-right: 20px;
+}
+
+.left-nav {
+  margin-right: 0px;
+}
+
+li:hover {
+  cursor: pointer;
+  color: #ff9f1c;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.nav-avatar {
+  object-fit: cover;
+  border-radius:50%;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
