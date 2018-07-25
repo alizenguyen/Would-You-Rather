@@ -50,20 +50,17 @@ class UserHome extends Component {
 
   render() {
 
-    const { users, questions, authedUser } = this.props
+    const { users, questions, authedUser, unAnsweredQuestions, answeredQuestions } = this.props
     const { loading, showUnansweredQuestions } = this.state
 
     console.log(loading)
+    console.log(authedUser)
+    console.log('Unanswered: ' + Object.values(unAnsweredQuestions))
+    console.log('Answered: ' + Object.values(answeredQuestions))
 
     if (loading === true && authedUser === null) {
       return <Redirect to='/' />
     }
-
-    const unAnsweredQuestions = Object.values(questions).filter((question) => 
-      !question.optionOne.votes.includes(authedUser) && !question.optionTwo.votes.includes(authedUser)) 
-
-    const answeredQuestions = Object.values(questions).filter((question) =>
-        question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser))
 
     return (
       <Fragment>
@@ -73,7 +70,7 @@ class UserHome extends Component {
           <button onClick={(e) => this.renderQuestions(e)}>Answered Questions</button>
         </div>
         <div>
-          {showUnansweredQuestions === true ? (
+          {showUnansweredQuestions === true && authedUser !== null? (
             unAnsweredQuestions.map(question => (
               <Question 
                 key={question.id}
@@ -96,7 +93,15 @@ class UserHome extends Component {
 }
 
 const mapStateToProps = state => {
+  const unAnsweredQuestions = Object.values(state.questions).filter((question) => 
+      !question.optionOne.votes.includes(state.authedUser) && !question.optionTwo.votes.includes(state.authedUser)) 
+
+  const answeredQuestions = Object.values(state.questions).filter((question) =>
+      question.optionOne.votes.includes(state.authedUser) || question.optionTwo.votes.includes(state.authedUser))
+
   return {
+    unAnsweredQuestions: Object.values(unAnsweredQuestions),
+    answeredQuestions: Object.values(answeredQuestions),
     users: state.users,
     authedUser: state.authedUser,
     questions: state.questions
