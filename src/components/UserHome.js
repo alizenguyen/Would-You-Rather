@@ -53,10 +53,10 @@ class UserHome extends Component {
     const { id, users, questions, authedUser, unAnsweredQuestions, answeredQuestions } = this.props
     const { loading, showUnansweredQuestions } = this.state
 
-    console.log(loading)
-    console.log(authedUser)
-    console.log('Unanswered: ' + Object.values(unAnsweredQuestions))
-    console.log('Answered: ' + Object.values(answeredQuestions))
+    // console.log(loading)
+    // console.log(authedUser)
+    // console.log('Unanswered: ' + Object.values(unAnsweredQuestions))
+    // console.log('Answered: ' + Object.values(answeredQuestions))
 
     // if (loading === true && authedUser === null) {
     //   return <Redirect to='/' />
@@ -77,6 +77,7 @@ class UserHome extends Component {
                 author={question.author}
                 optionOne={question.optionOne.text}
                 optionTwo={question.optionTwo.text}
+                userID={question.author}
                 />
             ))) 
             : answeredQuestions.map(question => (

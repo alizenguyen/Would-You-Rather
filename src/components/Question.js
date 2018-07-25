@@ -18,9 +18,13 @@ class Question extends Component {
   }
 }
 
-function mapStateToProps ({ users }, props) {
+function mapStateToProps ({ users }, { userID }) {
+  const user = users[userID];
+
+  console.log(user)
+
   return {
-    users: users,
+    users: user,
   }
 }
 
