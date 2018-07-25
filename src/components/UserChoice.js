@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from "react-router-dom";
 import { loadingUsers } from '../actions/users'
 import { saveAuthedUser } from '../actions/authedUser'
 import '../css/UserChoice.css'
@@ -10,7 +11,7 @@ import world from '../images/world-01.png'
 class UserChoice extends Component {
   state = {
     users: {},
-    selectUser: null
+    selectUser: null,
   }
 
   //CALLS getUsers() FUNCTION AND SETS THE STATE AS THE RESPONSE
@@ -25,8 +26,6 @@ class UserChoice extends Component {
     e.preventDefault();
     console.log(user);
     this.props.selectedUser(user);
-    //PART OF REACT ROUTER DOM
-    this.props.history.push(`/home/${id}`)
   }
 
   render () {
@@ -125,13 +124,13 @@ class UserChoice extends Component {
             </button>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
               {Object.keys(users).map(user => (
-                <li 
-                  className="user-dropdown" 
-                  key={users[user].id}
-                  //EVENT HANDLER TO SAVE USER
-                  onClick={(e) => this.saveUserChoice(e, users[user], users[user].id)}>
-                  <a> {users[user].name} </a>
-                </li>
+                  <li 
+                    className="user-dropdown" 
+                    key={users[user].id}
+                    //EVENT HANDLER TO SAVE USER
+                    onClick={(e) => this.saveUserChoice(e, users[user], users[user].id)}>
+                    <Link to={'/home/' + users[user].id}> {users[user].name} </Link>
+                  </li>
               ))}
             </ul>
           </div>

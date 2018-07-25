@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Nav from './Nav'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import UserChoice from './UserChoice'
 import Question from './Question'
 import { getAuthedUser } from '../actions/authedUser'
@@ -9,7 +10,6 @@ import { loadingUsers } from '../actions/users'
 
 class UserHome extends Component {
   state = {
-    authedUser: null,
     showUnansweredQuestions: true,
   }
 
@@ -23,8 +23,18 @@ class UserHome extends Component {
 
   render() {
 
-    const { users, questions, authedUser, unAnsweredQuestions, answeredQuestions } = this.props
+    const { users, questions, authedUser } = this.props
     const { showUnansweredQuestions } = this.state
+
+    // if (authedUser === null) {
+    //   return <Redirect to='/' />
+    // }
+
+    const unAnsweredQuestions = Object.values(questions).filter((question) => 
+      !question.optionOne.votes.includes(authedUser) && !question.optionTwo.votes.includes(authedUser)) 
+
+    const answeredQuestions = Object.values(questions).filter((question) =>
+        question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser))
 
     return (
       <Fragment>
@@ -57,20 +67,9 @@ class UserHome extends Component {
 }
 
 const mapStateToProps = state => {
-  const unAnsweredQuestions = Object.values(state.questions).filter((question) => 
-      !question.optionOne.votes.includes(state.authedUser) && !question.optionTwo.votes.includes(state.authedUser)) 
-
-    console.log(unAnsweredQuestions)
-    console.log(state.selectUser)
-
-    const answeredQuestions = Object.values(state.questions).filter((question) =>
-        question.optionOne.votes.includes(state.authedUser) || question.optionTwo.votes.includes(state.authedUser))
-
   return {
-    unAnsweredQuestions: unAnsweredQuestions,
-    answeredQuestions: answeredQuestions,
     users: state.users,
-    authedUser: state.authedUser,
+    authedUser: state.user,
     questions: state.questions
   }
 }
