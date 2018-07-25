@@ -4,6 +4,11 @@ import '../css/Question.css'
 
 class Question extends Component {
   render() {
+    const { users } = this.props
+    const {
+      avatarURL
+    } = users
+
     return(
       <form>
         <div>{this.props.author} asks:</div>
