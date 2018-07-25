@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import '../css/Question.css'
 
 class Question extends Component {
@@ -17,4 +18,10 @@ class Question extends Component {
   }
 }
 
-export default Question
+function mapStateToProps ({ users }, props) {
+  return {
+    users: users,
+  }
+}
+
+export default connect(mapStateToProps)(Question)

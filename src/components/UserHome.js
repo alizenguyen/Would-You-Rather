@@ -50,7 +50,7 @@ class UserHome extends Component {
 
   render() {
 
-    const { users, questions, authedUser, unAnsweredQuestions, answeredQuestions } = this.props
+    const { id, users, questions, authedUser, unAnsweredQuestions, answeredQuestions } = this.props
     const { loading, showUnansweredQuestions } = this.state
 
     console.log(loading)
@@ -92,19 +92,22 @@ class UserHome extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const unAnsweredQuestions = Object.values(state.questions).filter((question) => 
-      !question.optionOne.votes.includes(state.authedUser) && !question.optionTwo.votes.includes(state.authedUser)) 
+function mapStateToProps ({questions, users, authedUser}, props) {
+  const unAnsweredQuestions = Object.values(questions).filter((question) => 
+      !question.optionOne.votes.includes(authedUser) && !question.optionTwo.votes.includes(authedUser)) 
 
-  const answeredQuestions = Object.values(state.questions).filter((question) =>
-      question.optionOne.votes.includes(state.authedUser) || question.optionTwo.votes.includes(state.authedUser))
+  const answeredQuestions = Object.values(questions).filter((question) =>
+      question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser))
+
+  const { id } = props.match.params
 
   return {
+    id,
     unAnsweredQuestions: Object.values(unAnsweredQuestions),
     answeredQuestions: Object.values(answeredQuestions),
-    users: state.users,
-    authedUser: state.authedUser,
-    questions: state.questions
+    users: users,
+    authedUser: authedUser,
+    questions: questions
   }
 }
 
