@@ -24,7 +24,7 @@ export default function Nav () {
           </li>
         </ul>
       </nav>
-      <div class="clearfix"></div>
+      <div className="clearfix"></div>
     </div>
   )
 }
