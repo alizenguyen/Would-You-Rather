@@ -10,6 +10,7 @@ class Question extends Component {
         <label> {this.props.optionOne} </label>
         <input type='radio' /> 
         <label>{this.props.optionTwo}</label>
+        <input type='submit' />
       </form>  
     )
   }
