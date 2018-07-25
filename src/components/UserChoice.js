@@ -122,7 +122,10 @@ class UserChoice extends Component {
                     key={users[user].id}
                     //EVENT HANDLER TO SAVE USER
                     onClick={(e) => this.saveUserChoice(e, users[user], users[user].id)}>
-                    <Link to={'/home/' + users[user].id}> {users[user].name} </Link>
+                    <Link to={'/home/' + users[user].id}> 
+                      <img className="menu-avatar" src={users[user].avatarURL} /> 
+                      {users[user].name}
+                    </Link>
                   </li>
               ))}
             </ul>
