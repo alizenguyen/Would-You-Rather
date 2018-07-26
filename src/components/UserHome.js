@@ -56,11 +56,6 @@ class UserHome extends Component {
     const { id, users, questions, authedUser, unAnsweredQuestions, answeredQuestions, authedUserAvatar } = this.props
     const { loading, showUnansweredQuestions } = this.state
 
-    // console.log(loading)
-    // console.log(authedUser)
-    // console.log('Unanswered: ' + Object.values(unAnsweredQuestions))
-    // console.log('Answered: ' + Object.values(answeredQuestions))
-
     // if (loading === true && authedUser === null) {
     //   return <Redirect to='/' />
     // }
