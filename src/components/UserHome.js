@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import UserChoice from './UserChoice'
 import Question from './Question'
+import '../css/UserHome.css'
 import { getAuthedUser } from '../actions/authedUser'
 import { loadingQuestions } from '../actions/questions'
 import { loadingUsers } from '../actions/users'
@@ -65,9 +66,10 @@ class UserHome extends Component {
     return (
       <Fragment>
         <Nav />
-        <div>
-          <button onClick={(e) => this.renderQuestions(e)}>Unaswered Questions</button>
-          <button onClick={(e) => this.renderQuestions(e)}>Answered Questions</button>
+        <div className="userHome-question-buttons-div">
+          <button className="userHome-question-buttons userHome-unanswer-btn" onClick={(e) => this.renderQuestions(e)}>QUESTIONS TO ANSWER</button>
+          <button className="userHome-question-buttons userHome-answer-btn" onClick={(e) => this.renderQuestions(e)}>ANSWERED QUESTIONS</button>
+          <div className="clearfix"></div>
         </div>
         <div>
           {showUnansweredQuestions === true && authedUser !== null? (
