@@ -53,7 +53,7 @@ class UserHome extends Component {
 
   render() {
 
-    const { id, users, questions, authedUser, unAnsweredQuestions, answeredQuestions } = this.props
+    const { id, users, questions, authedUser, unAnsweredQuestions, answeredQuestions, authedUserAvatar } = this.props
     const { loading, showUnansweredQuestions } = this.state
 
     // console.log(loading)
@@ -67,7 +67,7 @@ class UserHome extends Component {
 
     return (
       <div className='userHome-full'>
-        <Nav />
+        <Nav avatar={authedUserAvatar}/>
         <div className="userHome-question-buttons-div">
           <button className="userHome-question-buttons userHome-unanswer-btn" onClick={(e) => this.renderQuestions(e)}>QUESTIONS TO ANSWER</button>
           <button className="userHome-question-buttons userHome-answer-btn" onClick={(e) => this.renderQuestions(e)}>ANSWERED QUESTIONS</button>
@@ -104,23 +104,26 @@ function mapStateToProps ({questions, users, authedUser}, props) {
 
   let answeredQuestions = {}
 
-  const { id } = props.match.params
+  let authedUserAvatar = ''
 
   if (authedUser !== null) {
     unAnsweredQuestions = Object.values(Object.values(questions)).filter((question) => 
-      !question.optionOne.votes.includes(authedUser.id) && !question.optionTwo.votes.includes(authedUser.id)) 
+      !question.optionOne.votes.includes(authedUser.id) && !question.optionTwo.votes.includes(authedUser.id)); 
 
     answeredQuestions = Object.values(questions).filter((question) =>
-        question.optionOne.votes.includes(authedUser.id) || question.optionTwo.votes.includes(authedUser.id))
+        question.optionOne.votes.includes(authedUser.id) || question.optionTwo.votes.includes(authedUser.id));
+    
+    authedUserAvatar = authedUser.avatarURL;
+    console.log(authedUserAvatar)
   }
 
   return {
-    id,
     unAnsweredQuestions: Object.values(unAnsweredQuestions),
     answeredQuestions: Object.values(answeredQuestions),
     users: users,
     authedUser: authedUser,
-    questions: questions
+    questions: questions,
+    authedUserAvatar: authedUserAvatar
   }
 }
 

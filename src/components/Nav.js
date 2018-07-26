@@ -3,7 +3,7 @@ import '../css/Nav.css'
 import logo from '../images/wyr_logo-01.png'
 import avatar from '../images/ayo-ogun.jpg'
 
-export default function Nav () {
+export default function Nav (props) {
   return (
     <div className='full-nav'>
       <img className="nav-logo" src={logo} />
@@ -19,7 +19,7 @@ export default function Nav () {
             LEADERSHIP
           </li>
           <li id='left-nav'>
-            <img className="nav-avatar" src={avatar} />
+            <img className="nav-avatar" src={props.avatar} />
             LOGOUT
           </li>
         </ul>
