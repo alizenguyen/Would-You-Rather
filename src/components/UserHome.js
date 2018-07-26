@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import UserChoice from './UserChoice'
 import Question from './Question'
+import Background from '../images/background.png'
 import '../css/UserHome.css'
 import { getAuthedUser } from '../actions/authedUser'
 import { loadingQuestions } from '../actions/questions'
@@ -64,7 +65,7 @@ class UserHome extends Component {
     // }
 
     return (
-      <Fragment>
+      <div className='userHome-full'>
         <Nav />
         <div className="userHome-question-buttons-div">
           <button className="userHome-question-buttons userHome-unanswer-btn" onClick={(e) => this.renderQuestions(e)}>QUESTIONS TO ANSWER</button>
@@ -89,7 +90,7 @@ class UserHome extends Component {
             ))
           }
         </div>
-      </Fragment>
+      </div>
     )
   }
 }

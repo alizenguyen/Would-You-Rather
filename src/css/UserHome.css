@@ -20,6 +20,7 @@
   padding: 8px 40px 10px 40px;
   background-color: #41ead4;
   color: #fdfffc;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .userHome-question-buttons:hover {
