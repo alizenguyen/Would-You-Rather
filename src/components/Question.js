@@ -17,10 +17,10 @@ class Question extends Component {
         <form className="question-form">
           <div className="question-title">{this.props.author} asks:</div>
           <h3> Would you rather... </h3>
-          <input type='radio' />
+          <input type='radio' name='option'/>
           <label className="question-choice"> {this.props.optionOne} </label>
           <br />
-          <input type='radio' /> 
+          <input type='radio' name='option'/> 
           <label className="question-choice">{this.props.optionTwo}</label>
           <br />
           <input className="question-button" type='submit' />
