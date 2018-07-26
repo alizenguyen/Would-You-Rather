@@ -16,7 +16,7 @@ export default function Nav (props) {
             NEW QUESTION
           </li>
           <li>
-            LEADERSHIP
+            LEADER BOARD
           </li>
           <li id='left-nav'>
             <img className="nav-avatar" src={props.avatar} />
