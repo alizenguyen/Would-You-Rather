@@ -6,9 +6,6 @@ class Question extends Component {
   render() {
     const { users } = this.props
 
-    console.log(users)
-    console.log(Object.values(users))
-
     return(
       <div className="question-full-div">
         <div>
@@ -33,8 +30,6 @@ class Question extends Component {
 
 function mapStateToProps ({ users }, { userID }) {
   const user = users[userID];
-  
-  console.log(user)
 
   return {
     users: user,
