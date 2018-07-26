@@ -15,15 +15,15 @@ class Question extends Component {
           <img className="question-avatar" src={Object.values(users)[2]} /> 
         </div>
         <form className="question-form">
-          <div>{this.props.author} asks:</div>
+          <div className="question-title">{this.props.author} asks:</div>
           <h3> Would you rather... </h3>
           <input type='radio' />
-          <label> {this.props.optionOne} </label>
+          <label className="question-choice"> {this.props.optionOne} </label>
           <br />
           <input type='radio' /> 
-          <label>{this.props.optionTwo}</label>
+          <label className="question-choice">{this.props.optionTwo}</label>
           <br />
-          <input type='submit' />
+          <input className="question-button" type='submit' />
         </form>  
         <div className="clearfix"></div>
       </div>
