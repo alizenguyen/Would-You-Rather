@@ -96,13 +96,19 @@ class UserHome extends Component {
 }
 
 function mapStateToProps ({questions, users, authedUser}, props) {
-  const unAnsweredQuestions = Object.values(questions).filter((question) => 
-      !question.optionOne.votes.includes(authedUser) && !question.optionTwo.votes.includes(authedUser)) 
+  let unAnsweredQuestions = {}
 
-  const answeredQuestions = Object.values(questions).filter((question) =>
-      question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser))
+  let answeredQuestions = {}
 
   const { id } = props.match.params
+
+  if (authedUser !== null) {
+    unAnsweredQuestions = Object.values(Object.values(questions)).filter((question) => 
+      !question.optionOne.votes.includes(authedUser.id) && !question.optionTwo.votes.includes(authedUser.id)) 
+
+    answeredQuestions = Object.values(questions).filter((question) =>
+        question.optionOne.votes.includes(authedUser.id) || question.optionTwo.votes.includes(authedUser.id))
+  }
 
   return {
     id,

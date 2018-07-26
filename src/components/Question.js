@@ -4,7 +4,9 @@ import '../css/Question.css'
 
 class Question extends Component {
   render() {
-    const { users } = this.props
+    const { users, authedUser } = this.props
+
+    console.log(authedUser)
 
     return(
       <div className="question-full-div">
@@ -12,7 +14,9 @@ class Question extends Component {
           <img className="question-avatar" src={Object.values(users)[2]} /> 
         </div>
         <form className="question-form">
-          <div className="question-title">{this.props.author} asks:</div>
+          {authedUser.id === this.props.author
+            ? <div className="question-title">You asked:</div>
+            : <div className="question-title">{this.props.author} asks:</div>}
           <h3> Would you rather... </h3>
           <input type='radio' name='option'/>
           <label className="question-choice"> {this.props.optionOne} </label>
@@ -28,11 +32,12 @@ class Question extends Component {
   }
 }
 
-function mapStateToProps ({ users }, { userID }) {
+function mapStateToProps ({ users, authedUser }, { userID }) {
   const user = users[userID];
 
   return {
     users: user,
+    authedUser: authedUser
   }
 }
 
