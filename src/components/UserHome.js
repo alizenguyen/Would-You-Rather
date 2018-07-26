@@ -69,7 +69,6 @@ class UserHome extends Component {
         <div className="userHome-question-buttons-div">
           <button className="userHome-question-buttons userHome-unanswer-btn" onClick={(e) => this.renderQuestions(e)}>QUESTIONS TO ANSWER</button>
           <button className="userHome-question-buttons userHome-answer-btn" onClick={(e) => this.renderQuestions(e)}>ANSWERED QUESTIONS</button>
-          <div className="clearfix"></div>
         </div>
         <div>
           {showUnansweredQuestions === true && authedUser !== null? (

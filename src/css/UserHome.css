@@ -1,9 +1,11 @@
 .userHome-question-buttons-div {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   width: 800px;
   margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .userHome-question-buttons {
@@ -25,14 +27,10 @@
 }
 
 .userHome-unanswer-btn {
-  float: left;
+  flex: 1;
 }
 
 .userHome-answer-btn {
-  float: left;
+  flex: 1;
   margin-left: 20px;
-}
-
-.clearfix {
-  clear: both;
 }
