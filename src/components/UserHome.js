@@ -19,18 +19,18 @@ class UserHome extends Component {
   componentDidMount() {
     const { getSelectedUser, getQuestions, getUsers } = this.props;
 
-    //CHECKS TO SEE IF COMPONENT IS MOUNTED BEFORE GETTING DATA
+//CHECKS TO SEE IF COMPONENT IS MOUNTED BEFORE GETTING DATA
     this.mounted = true;
 
-      // GETS CURRENT USER
+// GETS CURRENT USER
       getSelectedUser().then(response => {
-        //CHECKS TO SEE IF COMPONENT IS MOUNTED BEFORE GETTING DATA
+// IF USER EXISTS, THEN LOAD QUESTIONS AND USERS AND SET loading: false
+        this.setState({ loading: false })
+//CHECKS TO SEE IF COMPONENT IS MOUNTED BEFORE GETTING DATA
         if (this.mounted) {
-          // IF USER EXISTS, THEN LOAD QUESTIONS AND USERS AND SET loading: false
           if (response.user) {
             getQuestions()
               .then(getUsers())
-              .then(() => this.setState({ loading: false }));
           } 
         } else {
           alert("Apologies for the Error. Please select again.")
@@ -56,9 +56,9 @@ class UserHome extends Component {
     const { id, users, questions, authedUser, unAnsweredQuestions, answeredQuestions, authedUserAvatar } = this.props
     const { loading, showUnansweredQuestions } = this.state
 
-    // if (loading === true && authedUser === null) {
-    //   return <Redirect to='/' />
-    // }
+    if (loading === true && authedUser === null) {
+      return <Redirect to='/' />
+    }
 
     return (
       <div className='userHome-full'>
@@ -109,7 +109,6 @@ function mapStateToProps ({questions, users, authedUser}, props) {
         question.optionOne.votes.includes(authedUser.id) || question.optionTwo.votes.includes(authedUser.id));
     
     authedUserAvatar = authedUser.avatarURL;
-    console.log(authedUserAvatar)
   }
 
   return {
