@@ -39,11 +39,12 @@ class UserHome extends Component {
   }
 
   renderQuestions = (e) => {
-    if (this.showUnansweredQuestions === true) {
-      this.setState({showUnasweredQuestions: false})
+    if (this.state.showUnansweredQuestions === true) {
+      this.setState({showUnansweredQuestions: false})
     } else {
-      this.setState({showUnasweredQuestions: true})
+      this.setState({showUnansweredQuestions: true})
     }
+    console.log(this.state.showUnansweredQuestions)
   }
 
   componentWillUnmount () {
@@ -72,7 +73,7 @@ class UserHome extends Component {
           <button className="userHome-question-buttons userHome-answer-btn" onClick={(e) => this.renderQuestions(e)}>ANSWERED QUESTIONS</button>
         </div>
         <div>
-          {showUnansweredQuestions === true && authedUser !== null? (
+          {showUnansweredQuestions === true ? (
             unAnsweredQuestions.map(question => (
               <Question 
                 key={question.id}
@@ -86,6 +87,9 @@ class UserHome extends Component {
               <Question 
                 key={question.id}
                 author={question.author}
+                optionOne={question.optionOne.text}
+                optionTwo={question.optionTwo.text}
+                userID={question.author}
                 />
             ))
           }
