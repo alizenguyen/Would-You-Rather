@@ -1,4 +1,25 @@
+.question-full-div {
+  margin-top: 75px;
+}
+
 .question-title {
   font-size: 30px;
   color: #41ead4;
+}
+
+.question-avatar {
+  float: left;
+  object-fit: cover;
+  border-radius:50%;
+  width: 150px;
+  height: 150px;
+  margin-right: 10px;
+}
+
+.question-form {
+  padding-left: 250px;
+}
+
+.clearfix {
+  clear: both;
 }

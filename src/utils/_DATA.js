@@ -80,7 +80,7 @@ let questions = {
   },
   "loxhs1bqm25b708cmbf3g": {
     id: 'loxhs1bqm25b708cmbf3g',
-    author: 'tylermcginnis',
+    author: 'erikluca',
     timestamp: 1482579767190,
     optionOne: {
       votes: [],
