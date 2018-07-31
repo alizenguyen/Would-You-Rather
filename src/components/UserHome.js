@@ -23,10 +23,10 @@ class UserHome extends Component {
 
       // GETS CURRENT USER
       getSelectedUser().then(response => {
-        // IF USER EXISTS, THEN LOAD QUESTIONS AND USERS AND SET loading: false
-        this.setState({ loading: false })
         //CHECKS TO SEE IF COMPONENT IS MOUNTED BEFORE GETTING DATA
         if (this.mounted) {
+          // IF USER EXISTS, THEN LOAD QUESTIONS AND USERS AND SET loading: false
+          this.setState({ loading: false })
           if (response.user) {
             getQuestions()
               .then(getUsers())
@@ -84,6 +84,7 @@ class UserHome extends Component {
                 optionTwo={question.optionTwo.text}
                 userID={question.author}
                 optionOneVotes={question.optionOne.votes}
+                optionTwoVotes={question.optionTwo.votes}
                 />
             ))
           }

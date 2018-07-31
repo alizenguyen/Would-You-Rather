@@ -6,6 +6,8 @@ class Question extends Component {
   render() {
     const { users, authedUser } = this.props
 
+    const totalLength = this.props.optionOneVotes.length + this.props.optionTwoVotes.length
+
     return(
       <div className="question-full-div">
         <div>
@@ -19,11 +21,12 @@ class Question extends Component {
           <br />
           {this.props.optionOneVotes.includes(Object.values(authedUser)[0])
           ? <div>
-              <p>You chose </p>
+              <p>Your Vote</p>
               <p>Would you rather {this.props.optionOne} </p>
               <br />
               <p>Would you rather {this.props.optionTwo}</p>
               <br />
+              <p>{this.props.optionOneVotes.length} out of {totalLength}</p>
             </div>
           : <div> 
               <p>Would you rather {this.props.optionOne} </p>
@@ -31,6 +34,7 @@ class Question extends Component {
               <p>You chose </p>
               <p>Would you rather {this.props.optionTwo}</p>
               <br />
+              <p>{this.props.optionTwoVotes.length} out of {totalLength}</p>
             </div>
           }
         </div>  
