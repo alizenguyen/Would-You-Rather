@@ -1,7 +1,6 @@
 import React from 'react'
 import '../css/Nav.css'
 import logo from '../images/wyr_logo-01.png'
-import avatar from '../images/ayo-ogun.jpg'
 
 export default function Nav (props) {
   return (
@@ -19,7 +18,7 @@ export default function Nav (props) {
             LEADER BOARD
           </li>
           <li id='left-nav'>
-            <img className="nav-avatar" src={props.avatar} />
+            <img className="nav-avatar" alt="user-avatar" src={props.avatar} />
             LOGOUT
           </li>
         </ul>

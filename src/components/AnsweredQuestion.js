@@ -9,7 +9,7 @@ class Question extends Component {
     return(
       <div className="question-full-div">
         <div>
-          <img className="question-avatar" src={Object.values(users)[2]} /> 
+          <img className="question-avatar" alt="user-avatar" src={Object.values(users)[2]} /> 
         </div>
         <div className="question-form">
           {authedUser.id === this.props.author
