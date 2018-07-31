@@ -37,12 +37,21 @@ class UserHome extends Component {
       });
   }
 
-  renderQuestions = (e) => {
+  renderAnsweredQuestions = () => {
     if (this.state.showUnansweredQuestions === true) {
-      this.setState({showUnansweredQuestions: false})
-    } else {
-      this.setState({showUnansweredQuestions: true})
-    }
+      this.setState(
+        {showUnansweredQuestions: false}
+      )
+    } 
+
+  }
+
+  renderUnansweredQuestions = () => {
+    if (this.state.showUnansweredQuestions === false) {
+      this.setState(
+        {showUnansweredQuestions: true}
+      )
+    } 
   }
 
   componentWillUnmount () {
@@ -62,8 +71,8 @@ class UserHome extends Component {
       <div className='userHome-full'>
         <Nav avatar={authedUserAvatar}/>
         <div className="userHome-question-buttons-div">
-          <button className="userHome-question-buttons userHome-unanswer-btn" onClick={(e) => this.renderQuestions(e)}>QUESTIONS TO ANSWER</button>
-          <button className="userHome-question-buttons userHome-answer-btn" onClick={(e) => this.renderQuestions(e)}>ANSWERED QUESTIONS</button>
+          <button className="userHome-question-buttons userHome-unanswer-btn" onClick={this.renderUnansweredQuestions}>QUESTIONS TO ANSWER</button>
+          <button className="userHome-question-buttons userHome-answer-btn" onClick={this.renderAnsweredQuestions}>ANSWERED QUESTIONS</button>
         </div>
         <div>
           {showUnansweredQuestions === true ? (
