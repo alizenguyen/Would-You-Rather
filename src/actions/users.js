@@ -18,7 +18,7 @@ export const loadingUsers = () => {
 }
 
 //IN USER BECAUSE IT APPLIES TO USER OBJECT
-function saveQuestionAnwer ({ authedUser, qid, answer}) {
+export function saveQuestionAnswer ({ authedUser, qid, answer}) {
   return {
     type: SAVE_QUESTION_ANSWER,
     authedUser,
