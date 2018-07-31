@@ -52,7 +52,7 @@ class UserHome extends Component {
 
   render() {
 
-    const { id, users, questions, authedUser, unAnsweredQuestions, answeredQuestions, authedUserAvatar } = this.props
+    const { authedUser, unAnsweredQuestions, answeredQuestions, authedUserAvatar } = this.props
     const { loading, showUnansweredQuestions } = this.state
 
     if (loading === true && authedUser === null) {
@@ -81,9 +81,12 @@ class UserHome extends Component {
               <AnsweredQuestion 
                 key={question.id}
                 author={question.author}
+                questionID={question.id}
                 optionOne={question.optionOne.text}
                 optionTwo={question.optionTwo.text}
                 userID={question.author}
+                optionOneVotes={question.optionOne.votes}
+                optionTwoVotes={question.optionTwo.votes}
                 />
             ))
           }

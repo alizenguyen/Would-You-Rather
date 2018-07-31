@@ -6,8 +6,6 @@ class Question extends Component {
   render() {
     const { users, authedUser } = this.props
 
-    console.log(authedUser)
-
     return(
       <div className="question-full-div">
         <div>

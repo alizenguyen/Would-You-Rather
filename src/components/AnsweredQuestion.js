@@ -6,8 +6,6 @@ class Question extends Component {
   render() {
     const { users, authedUser } = this.props
 
-    console.log(authedUser)
-
     return(
       <div className="question-full-div">
         <div>
@@ -19,10 +17,22 @@ class Question extends Component {
             : <div className="question-title">{this.props.author} asked:</div>}
           <h3> Results </h3>
           <br />
-          <p>Would you rather {this.props.optionOne} </p>
-          <br />
-          <p>Would you rather {this.props.optionTwo}</p>
-          <br />
+          {this.props.optionOneVotes.includes(Object.values(authedUser)[0])
+          ? <div>
+              <p>You chose </p>
+              <p>Would you rather {this.props.optionOne} </p>
+              <br />
+              <p>Would you rather {this.props.optionTwo}</p>
+              <br />
+            </div>
+          : <div> 
+              <p>Would you rather {this.props.optionOne} </p>
+              <br />
+              <p>You chose </p>
+              <p>Would you rather {this.props.optionTwo}</p>
+              <br />
+            </div>
+          }
         </div>  
         <div className="clearfix"></div>
       </div>
