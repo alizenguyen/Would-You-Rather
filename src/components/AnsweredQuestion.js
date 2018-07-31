@@ -4,9 +4,9 @@ import '../css/AnsweredQuestion.css'
 
 class Question extends Component {
   render() {
-    const { users, authedUser } = this.props
+    const { users, authedUser, author, optionOne, optionTwo, optionOneVotes, optionTwoVotes } = this.props
 
-    const totalLength = this.props.optionOneVotes.length + this.props.optionTwoVotes.length
+    const totalLength = optionOneVotes.length + optionTwoVotes.length
 
     return(
       <div className="question-full-div">
@@ -14,27 +14,27 @@ class Question extends Component {
           <img className="question-avatar" alt="user-avatar" src={Object.values(users)[2]} /> 
         </div>
         <div className="question-form">
-          {authedUser.id === this.props.author
+          {authedUser.id === author
             ? <div className="question-title">Asked by You:</div>
-            : <div className="question-title">{this.props.author} asked:</div>}
+            : <div className="question-title">{author} asked:</div>}
           <h3> Results </h3>
           <br />
-          {this.props.optionOneVotes.includes(Object.values(authedUser)[0])
+          {optionOneVotes.includes(Object.values(authedUser)[0])
           ? <div>
               <p>Your Vote</p>
-              <p>Would you rather {this.props.optionOne} </p>
+              <p>Would you rather {optionOne} </p>
+              <p>{optionOneVotes.length} out of {totalLength}</p>
               <br />
-              <p>Would you rather {this.props.optionTwo}</p>
-              <br />
-              <p>{this.props.optionOneVotes.length} out of {totalLength}</p>
+              <p>Would you rather {optionTwo}</p>
+              <p>{optionTwoVotes.length} out of {totalLength}</p>
             </div>
           : <div> 
-              <p>Would you rather {this.props.optionOne} </p>
+              <p>Would you rather {optionOne} </p>
+              <p>{optionOneVotes.length} out of {totalLength}</p>
               <br />
               <p>You chose </p>
-              <p>Would you rather {this.props.optionTwo}</p>
-              <br />
-              <p>{this.props.optionTwoVotes.length} out of {totalLength}</p>
+              <p>Would you rather {optionTwo}</p>
+              <p>{optionTwoVotes.length} out of {totalLength}</p>
             </div>
           }
         </div>  
