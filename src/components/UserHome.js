@@ -79,6 +79,7 @@ class UserHome extends Component {
             unAnsweredQuestions.map(question => (
               <Question 
                 key={question.id}
+                questionID={question.id}
                 author={question.author}
                 optionOne={question.optionOne.text}
                 optionTwo={question.optionTwo.text}
@@ -89,7 +90,6 @@ class UserHome extends Component {
               <AnsweredQuestion 
                 key={question.id}
                 author={question.author}
-                questionID={question.id}
                 optionOne={question.optionOne.text}
                 optionTwo={question.optionTwo.text}
                 userID={question.author}

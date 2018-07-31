@@ -1,8 +1,11 @@
-import { _getQuestions } from "../utils/_DATA";
+import { _getQuestions } from '../utils/_DATA';
+import { handleQuestionAnswer } from '../utils/api'
 
 export const GET_QUESTIONS = 'GET_QUESTIONS'
 export const SAVE_QUESTION = 'SAVE_QUESTION'
+export const SAVE_QUESTION_ANSWER = 'SAVE_QUESTION_ANSWER'
 
+//GETS ALL QUESTIONS
 function getQuestions (questions) {
   return {
     type: GET_QUESTIONS,
@@ -16,9 +19,34 @@ export const loadingQuestions = () => {
   }
 }
 
+//SAVE NEW QUESTION
 export function saveQuestion (question) {
   return {
     type: SAVE_QUESTION,
     question
+  }
+}
+
+//SAVES QUESTION ANSWER OF PARTICULAR USER
+function saveQuestionAnswer ({ authedUser, qid, answer}) {
+  return {
+    type: SAVE_QUESTION_ANSWER,
+    authedUser,
+    qid,
+    answer
+  }
+}
+
+export const savingQuestionAnswer = (qid, answer) => {
+  return (dispatch, getState) => {
+    const { authedUser } = getState()
+
+    dispatch(saveQuestionAnswer({ authedUser, qid, answer }))
+
+    return handleQuestionAnswer({
+      authedUser,
+      qid,
+      answer
+    })
   }
 }

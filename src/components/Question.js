@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { saveQuestionAnswer } from '../actions/users'
+import { savingQuestionAnswer } from '../actions/questions'
 import '../css/Question.css'
 
 class Question extends Component {
@@ -10,19 +10,23 @@ class Question extends Component {
 
   handleChange = (e) => {
     const answer = e.target.value
+    const { authedUser } = this.props
+    
     console.log(answer)
+    console.log(Object.values(authedUser)[0])
 
     this.setState({ answer: answer })
-    console.log(this.state.answer)
   }
   
   handleSubmit = (e) => {
     e.preventDefault();
 
     const { answer } = this.state
-    const { authedUser, questionID } = this.props
+    const { dispatch, questionID } = this.props
+    console.log(answer)
+    console.log(questionID)
 
-    dispatchEvent(saveQuestionAnswer(authedUser, questionID, answer))
+    dispatch(savingQuestionAnswer(questionID, answer))
   }
 
   render() {
