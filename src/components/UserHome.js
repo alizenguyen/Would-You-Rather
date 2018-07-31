@@ -1,10 +1,9 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Nav from './Nav'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import UserChoice from './UserChoice'
 import Question from './Question'
-import Background from '../images/background.png'
+import AnsweredQuestion from './AnsweredQuestion'
 import '../css/UserHome.css'
 import { getAuthedUser } from '../actions/authedUser'
 import { loadingQuestions } from '../actions/questions'
@@ -79,7 +78,7 @@ class UserHome extends Component {
                 />
             ))) 
             : answeredQuestions.map(question => (
-              <Question 
+              <AnsweredQuestion 
                 key={question.id}
                 author={question.author}
                 optionOne={question.optionOne.text}
