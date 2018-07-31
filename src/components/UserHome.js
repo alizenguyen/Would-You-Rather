@@ -43,7 +43,6 @@ class UserHome extends Component {
     } else {
       this.setState({showUnansweredQuestions: true})
     }
-    console.log(this.state.showUnansweredQuestions)
   }
 
   componentWillUnmount () {
