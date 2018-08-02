@@ -69,7 +69,7 @@ class UserHome extends Component {
 
     return (
       <div className='userHome-full'>
-        <Nav avatar={authedUserAvatar}/>
+        <Nav />
         <div className="userHome-question-buttons-div">
           <button className="userHome-question-buttons userHome-unanswer-btn" onClick={this.renderUnansweredQuestions}>QUESTIONS TO ANSWER</button>
           <button className="userHome-question-buttons userHome-answer-btn" onClick={this.renderAnsweredQuestions}>ANSWERED QUESTIONS</button>
@@ -109,16 +109,12 @@ function mapStateToProps ({questions, users, authedUser}, props) {
 
   let answeredQuestions = {}
 
-  let authedUserAvatar = ''
-
   if (authedUser !== null) {
     unAnsweredQuestions = Object.values(Object.values(questions)).filter((question) => 
       !question.optionOne.votes.includes(authedUser.id) && !question.optionTwo.votes.includes(authedUser.id)); 
 
     answeredQuestions = Object.values(questions).filter((question) =>
         question.optionOne.votes.includes(authedUser.id) || question.optionTwo.votes.includes(authedUser.id));
-    
-    authedUserAvatar = authedUser.avatarURL;
   }
 
   return {
@@ -127,7 +123,6 @@ function mapStateToProps ({questions, users, authedUser}, props) {
     users: users,
     authedUser: authedUser,
     questions: questions,
-    authedUserAvatar: authedUserAvatar
   }
 }
 
