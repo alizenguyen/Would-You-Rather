@@ -31,7 +31,7 @@ class UserHome extends Component {
 
   render() {
 
-    const { authedUser, unAnsweredQuestions, answeredQuestions, authedUserAvatar } = this.props
+    const { authedUser, unAnsweredQuestions, answeredQuestions } = this.props
     const { showUnansweredQuestions } = this.state
 
     if (authedUser === null) {

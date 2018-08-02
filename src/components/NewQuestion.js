@@ -36,13 +36,17 @@ class NewQuestion extends Component {
   }
 
   render() {
-    const { authedUserAvatar, authedUserID } = this.props
+    const { authedUser, authedUserAvatar, authedUserID } = this.props
     const { optionOne, optionTwo, redirectToNewPage } = this.state
 
     if (redirectToNewPage) {
       return (
         <Redirect to={"/home/" + authedUserID}/>
       )
+    }
+
+    if (authedUser === null) {
+      return <Redirect to='/' />
     }
 
     return(
@@ -83,6 +87,7 @@ function mapStateToProps ({ authedUser }) {
   }
 
   return {
+    authedUser: authedUser,
     authedUserAvatar: authedUserAvatar,
     authedUserID: authedUserID
   }
