@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
+import { saveAuthedUser } from '../actions/authedUser'
 import '../css/Nav.css'
 import logo from '../images/wyr_logo-01.png'
 
 class Nav extends Component {
+  handleLogOut = (e) => {
+    this.props.selectedUser(null)
+  }
+
   render() {
     const { authedUserID, authedUserAvatar } = this.props
 
@@ -22,7 +27,7 @@ class Nav extends Component {
           <Link to={'/leader'} className='nav-item'>
             LEADER BOARD
           </Link>
-          <Link to={'/'} className='nav-item' id='left-nav'>
+          <Link to={'/'} className='nav-item' id='left-nav' onClick={this.handleLogOut}>
             <img className="nav-avatar" alt="user-avatar" src={authedUserAvatar} />
             LOGOUT
           </Link>
@@ -49,4 +54,10 @@ function mapStateToProps ({ authedUser }) {
   }
 }
 
-export default connect(mapStateToProps)(Nav)
+const mapDispatchToProps = dispatch => {
+  return {
+    selectedUser: (user) => dispatch(saveAuthedUser(user)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)

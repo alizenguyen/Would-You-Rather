@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from "react-router";
-import { loadingUsers } from '../actions/users'
 import { saveAuthedUser } from '../actions/authedUser'
 import '../css/UserChoice.css'
 import Particles from 'react-particles-js'
