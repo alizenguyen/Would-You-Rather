@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 import Nav from './Nav'
 import { addQuestion } from '../actions/questions'
 import '../css/NewQuestion.css'
@@ -7,19 +8,20 @@ import '../css/NewQuestion.css'
 class NewQuestion extends Component {
   state = {
     optionOne: '',
-    optionTwo: ''
+    optionTwo: '',
+    redirectToNewPage: false,
   }
 
   handleChangeOptionOne = (e) => {
     const optionOne = e.target.value
 
-    this.setState({ optionOne: optionOne })
+    this.setState({ optionOne: optionOne });
   }
 
   handleChangeOptionTwo = (e) => {
     const optionTwo = e.target.value
 
-    this.setState({ optionTwo: optionTwo })
+    this.setState({ optionTwo: optionTwo });
   }
 
   handleSubmit = (e) => {
@@ -28,12 +30,22 @@ class NewQuestion extends Component {
     const { optionOne, optionTwo } = this.state
     const { dispatch } = this.props
 
-    dispatch(addQuestion(optionOne, optionTwo))
+    dispatch(addQuestion(optionOne, optionTwo));
+    this.setState({ userID: true });
+    this.setState({ redirectToNewPage: true });
   }
 
   render() {
-    const { authedUserAvatar } = this.props
-    const { optionOne, optionTwo } = this.state
+    const { authedUserAvatar, authedUserID } = this.props
+    const { optionOne, optionTwo, redirectToNewPage } = this.state
+
+    if (redirectToNewPage) {
+      console.log(redirectToNewPage);
+
+      return (
+        <Redirect to={"/home/" + authedUserID}/>
+      )
+    }
 
     return(
       <Fragment>
@@ -65,13 +77,16 @@ class NewQuestion extends Component {
 
 function mapStateToProps ({ authedUser }) {
   let authedUserAvatar = ''
+  let authedUserID = ''
 
   if (authedUser !== null) {
     authedUserAvatar = authedUser.avatarURL;
+    authedUserID = authedUser.id
   }
 
   return {
-    authedUserAvatar: authedUserAvatar
+    authedUserAvatar: authedUserAvatar,
+    authedUserID: authedUserID
   }
 }
 
