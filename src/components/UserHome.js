@@ -6,18 +6,11 @@ import Question from './Question'
 import AnsweredQuestion from './AnsweredQuestion'
 import '../css/UserHome.css'
 import { getAuthedUser } from '../actions/authedUser'
-import { loadingQuestions } from '../actions/questions'
-import { loadingUsers } from '../actions/users'
 
 class UserHome extends Component {
   state = {
     loading: true,
     showUnansweredQuestions: true,
-  }
-
-  componentDidMount() {
-    const { getSelectedUser } = this.props;
-      getSelectedUser()
   }
 
   renderAnsweredQuestions = () => {
@@ -41,7 +34,7 @@ class UserHome extends Component {
     const { authedUser, unAnsweredQuestions, answeredQuestions, authedUserAvatar } = this.props
     const { loading, showUnansweredQuestions } = this.state
 
-    if (loading === true && authedUser === null) {
+    if (authedUser === null) {
       return <Redirect to='/' />
     }
 
@@ -107,8 +100,6 @@ function mapStateToProps ({questions, users, authedUser}, props) {
 const mapDispatchToProps = dispatch => {
   return {
     getSelectedUser: () => dispatch(getAuthedUser()),
-    getQuestions: () => dispatch(loadingQuestions()),
-    getUsers: () => dispatch(loadingUsers())
   }
 }
 
