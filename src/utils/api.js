@@ -15,8 +15,8 @@ export function getInitialData () {
   }))
 }
 
-export function saveQuestion (question) {
-  return _saveQuestion(question)
+export function handleSaveQuestion (info) {
+  return _saveQuestion(info)
 }
 
 export function handleQuestionAnswer (authedUser, qid, answer) {

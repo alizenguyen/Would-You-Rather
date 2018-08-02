@@ -23,10 +23,12 @@ class Question extends Component {
 
     const { answer } = this.state
     const { dispatch, questionID } = this.props
-    console.log(answer)
-    console.log(questionID)
-
-    dispatch(savingQuestionAnswer(questionID, answer))
+    
+    if (!answer) {
+      alert('Please select an answer.')
+    } else {
+      dispatch(savingQuestionAnswer(questionID, answer))
+    }
   }
 
   render() {

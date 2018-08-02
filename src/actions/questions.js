@@ -1,5 +1,5 @@
 import { _getQuestions } from '../utils/_DATA';
-import { handleQuestionAnswer } from '../utils/api'
+import { handleQuestionAnswer, handleSaveQuestion } from '../utils/api'
 
 export const GET_QUESTIONS = 'GET_QUESTIONS'
 export const SAVE_QUESTION = 'SAVE_QUESTION'
@@ -48,5 +48,20 @@ export const savingQuestionAnswer = (qid, answer) => {
       qid,
       answer
     })
+  }
+}
+
+export const addQuestion = (optionOne, optionTwo) => {
+  return (dispatch, getState) => {
+    let { authedUser } = getState()
+
+    authedUser = Object.values(authedUser)[0]
+
+    return handleSaveQuestion({
+      optionOneText: optionOne,
+      optionTwoText: optionTwo,
+      author: authedUser
+    })
+      .then((question) => dispatch(saveQuestion(question)))
   }
 }
