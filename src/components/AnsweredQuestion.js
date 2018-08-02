@@ -7,9 +7,11 @@ class Question extends Component {
     const { users, authedUser, author, optionOne, optionTwo, optionOneVotes, optionTwoVotes } = this.props
 
     const totalLength = optionOneVotes.length + optionTwoVotes.length
+    const percentOne = (optionOneVotes.length / totalLength) * 100
+    const percentTwo = (optionTwoVotes.length / totalLength) * 100
 
     return(
-      <div className="question-full-div">
+      <div className="answered-full-div">
         <div>
           <img className="question-avatar" alt="user-avatar" src={Object.values(users)[2]} /> 
         </div>
@@ -23,17 +25,29 @@ class Question extends Component {
           ? <div>
               <p>Your Vote</p>
               <p>Would you rather {optionOne} </p>
+              <div className="progress">
+                <div className="progress-bar" style={{width: `${percentOne}%`}}></div>
+              </div>
               <p>{optionOneVotes.length} out of {totalLength}</p>
               <br />
               <p>Would you rather {optionTwo}</p>
+              <div className="progress">
+                <div className="progress-bar" style={{width: `${percentTwo}%`}}></div>
+              </div>
               <p>{optionTwoVotes.length} out of {totalLength}</p>
             </div>
           : <div> 
               <p>Would you rather {optionOne} </p>
+              <div className="progress">
+                <div className="progress-bar" style={{width: `${percentOne}%`}}></div>
+              </div>
               <p>{optionOneVotes.length} out of {totalLength}</p>
               <br />
               <p>You chose </p>
               <p>Would you rather {optionTwo}</p>
+              <div className="progress">
+                <div className="progress-bar" style={{width: `${percentTwo}%`}}></div>
+              </div>
               <p>{optionTwoVotes.length} out of {totalLength}</p>
             </div>
           }
