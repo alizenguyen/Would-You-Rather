@@ -16,25 +16,8 @@ class UserHome extends Component {
   }
 
   componentDidMount() {
-    const { getSelectedUser, getQuestions, getUsers } = this.props;
-
-    //CHECKS TO SEE IF COMPONENT IS MOUNTED BEFORE GETTING DATA
-    this.mounted = true;
-
-      // GETS CURRENT USER
-      getSelectedUser().then(response => {
-        //CHECKS TO SEE IF COMPONENT IS MOUNTED BEFORE GETTING DATA
-        if (this.mounted) {
-          // IF USER EXISTS, THEN LOAD QUESTIONS AND USERS AND SET loading: false
-          this.setState({ loading: false })
-          if (response.user) {
-            getQuestions()
-              .then(getUsers())
-          } 
-        } else {
-          alert("Apologies for the Error. Please select again.")
-        }
-      });
+    const { getSelectedUser } = this.props;
+      getSelectedUser()
   }
 
   renderAnsweredQuestions = () => {
@@ -43,7 +26,6 @@ class UserHome extends Component {
         {showUnansweredQuestions: false}
       )
     } 
-
   }
 
   renderUnansweredQuestions = () => {
@@ -52,10 +34,6 @@ class UserHome extends Component {
         {showUnansweredQuestions: true}
       )
     } 
-  }
-
-  componentWillUnmount () {
-    this.mounted = false;
   }
 
   render() {

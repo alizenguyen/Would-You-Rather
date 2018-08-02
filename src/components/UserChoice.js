@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router";
 import { loadingUsers } from '../actions/users'
 import { saveAuthedUser } from '../actions/authedUser'
 import '../css/UserChoice.css'
@@ -12,17 +12,29 @@ class UserChoice extends Component {
   state = {
     users: {},
     selectUser: null,
+    redirectToNewPage: false,
+    userID: ''
   }
 
   //WILL SAVE SELECTED USER TO DATABASE
   saveUserChoice = (e, user) => {
     e.preventDefault();
     console.log(user);
-    this.props.selectedUser(user);
+    console.log(user.id)
+    this.props.selectedUser(user)
+      .then (() => this.setState({ userID: user.id }))
+      .then (() => this.setState({ redirectToNewPage: true }))
   }
 
   render () {
     const { users } = this.props
+    const { redirectToNewPage, userID } = this.state
+
+    if (redirectToNewPage) {
+      return (
+        <Redirect to={"/home/" + userID}/>
+      )
+    }
     
     return (
       <div>
@@ -123,9 +135,9 @@ class UserChoice extends Component {
                     //EVENT HANDLER TO SAVE USER
                     onClick={(e) => this.saveUserChoice(e, users[user], users[user].id)}>
                     <img className="menu-avatar" src={users[user].avatarURL} /> 
-                    <Link to={'/home/' + users[user].id} className='menu-name'> 
+                    <a className='menu-name'> 
                       {users[user].name}
-                    </Link>
+                    </a>
                   </li>
               ))}
             </ul>
@@ -138,8 +150,9 @@ class UserChoice extends Component {
 
 //GRABS THE USERS AS A PROP
 const mapStateToProps = state => {
+
   return {
-    users: state.users
+    users: state.users,
   }
 }
 

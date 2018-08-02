@@ -40,8 +40,6 @@ class NewQuestion extends Component {
     const { optionOne, optionTwo, redirectToNewPage } = this.state
 
     if (redirectToNewPage) {
-      console.log(redirectToNewPage);
-
       return (
         <Redirect to={"/home/" + authedUserID}/>
       )
