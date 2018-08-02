@@ -1,29 +1,52 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Link } from "react-router-dom";
 import '../css/Nav.css'
 import logo from '../images/wyr_logo-01.png'
 
-export default function Nav (props) {
-  return (
+class Nav extends Component {
+  render() {
+    const { authedUserID, authedUserAvatar } = this.props
+
+    return (
     <div className='full-nav'>
-      <img className="nav-logo" src={logo} />
+      <img className='nav-logo' src={logo} />
       <nav className='nav'>
         <ul>
-          <li>
+          <Link to={'/home/' + authedUserID} className='nav-item'>
             HOME
-          </li>
-          <li>
+          </Link>
+          <Link to={'/newquestion'} className='nav-item'> 
             NEW QUESTION
-          </li>
-          <li>
+          </Link>
+          <Link to={'/leader'} className='nav-item'>
             LEADER BOARD
-          </li>
-          <li id='left-nav'>
-            <img className="nav-avatar" alt="user-avatar" src={props.avatar} />
+          </Link>
+          <Link to={'/'} className='nav-item' id='left-nav'>
+            <img className="nav-avatar" alt="user-avatar" src={authedUserAvatar} />
             LOGOUT
-          </li>
+          </Link>
         </ul>
       </nav>
       <div className="clearfix"></div>
     </div>
   )
+  }
 }
+
+function mapStateToProps ({ authedUser }) {
+  let authedUserAvatar = ''
+  let authedUserID = ''
+
+  if (authedUser !== null) {
+    authedUserAvatar = authedUser.avatarURL;
+    authedUserID = authedUser.id
+  }
+
+  return {
+    authedUserAvatar: authedUserAvatar,
+    authedUserID: authedUserID
+  }
+}
+
+export default connect(mapStateToProps)(Nav)

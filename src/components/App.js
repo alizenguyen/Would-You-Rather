@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import UserChoice from './UserChoice'
 import UserHome from './UserHome'
+import NewQuestion from './NewQuestion'
 import LoadingBar from 'react-redux-loading'
 import '../css/App.css';
 import { connect } from 'react-redux'
@@ -24,6 +25,7 @@ class App extends Component {
                 : <div>
                     <Route path='/' exact component={UserChoice} />
                     <Route path='/home/:id' component={UserHome} />
+                    <Route path='/newquestion' component={NewQuestion} />
                   </div>
                 }
           </div>

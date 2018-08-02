@@ -14,17 +14,19 @@ nav {
   margin-top: 10px;
 }
 
-li {
-  margin-right: 0px;
+.nav-item {
+  padding-left: 20px;
+  color: black;
+}
+
+.nav-item:hover {
+  text-decoration: none;
+  cursor: pointer;
+  color: #ff9f1c;
 }
 
 .left-nav {
   margin-right: 0px;
-}
-
-li:hover {
-  cursor: pointer;
-  color: #ff9f1c;
 }
 
 .clearfix {
