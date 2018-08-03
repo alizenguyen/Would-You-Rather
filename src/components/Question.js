@@ -49,7 +49,7 @@ class Question extends Component {
           <input className="question-button" type='submit' />
         </form>  
         <div className="clearfix"></div>
-      </div>
+    </div>
     )
   }
 }
