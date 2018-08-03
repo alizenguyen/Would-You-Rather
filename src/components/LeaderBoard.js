@@ -33,6 +33,7 @@ function mapStateToProps ({ users }) {
 
   const userArray = Object.keys(users).map((user) => {
     const userInfo = {
+      id: users[user].id,
       avatarURL: users[user].avatarURL,
       name: users[user].name,
       answeredResults: Object.keys(users[user].answers).length,
