@@ -13,7 +13,7 @@ class Question extends Component {
     return(
       <div className="answered-full-div">
         <div>
-          <img className="question-avatar" alt="user-avatar" src={Object.values(users)[2]} /> 
+          <img className="answered-avatar" alt="user-avatar" src={Object.values(users)[2]} /> 
         </div>
         <div className="question-form">
           {authedUser.id === author
@@ -22,33 +22,45 @@ class Question extends Component {
           <h3> Results </h3>
           <br />
           {optionOneVotes.includes(Object.values(authedUser)[0])
-          ? <div>
-              <p>Your Vote</p>
-              <p>Would you rather {optionOne} </p>
-              <div className="progress">
-                <div className="progress-bar" style={{width: `${percentOne}%`}}></div>
+          ? <div className='answered-div'>
+              <div className='user-choice'>
+                <div className='title-user-choice'>
+                  <p className='title-content'>You chose</p>
+                </div>
+                <p>Would you rather {optionOne} </p>
+                <div className="progress">
+                  <div className="progress-bar" style={{width: `${percentOne}%`}}></div>
+                </div>
+                <p>{optionOneVotes.length} out of {totalLength} votes</p>
               </div>
-              <p>{optionOneVotes.length} out of {totalLength}</p>
               <br />
-              <p>Would you rather {optionTwo}</p>
-              <div className="progress">
-                <div className="progress-bar" style={{width: `${percentTwo}%`}}></div>
+              <div className='not-user-choice'>
+                <p>Would you rather {optionTwo}</p>
+                <div className="progress">
+                  <div className="progress-bar" style={{width: `${percentTwo}%`}}></div>
+                </div>
+                <p>{optionTwoVotes.length} out of {totalLength} votes</p>
               </div>
-              <p>{optionTwoVotes.length} out of {totalLength}</p>
             </div>
-          : <div> 
-              <p>Would you rather {optionOne} </p>
-              <div className="progress">
-                <div className="progress-bar" style={{width: `${percentOne}%`}}></div>
+          : <div className='answered-div'> 
+              <div className='not-user-choice'>
+                <p>Would you rather {optionOne} </p>
+                <div className="progress">
+                  <div className="progress-bar" style={{width: `${percentOne}%`}}></div>
+                </div>
+                <p>{optionOneVotes.length} out of {totalLength} votes</p>
               </div>
-              <p>{optionOneVotes.length} out of {totalLength}</p>
               <br />
-              <p>You chose </p>
-              <p>Would you rather {optionTwo}</p>
-              <div className="progress">
-                <div className="progress-bar" style={{width: `${percentTwo}%`}}></div>
+              <div className='user-choice'>
+                <div className='title-user-choice'>
+                  <p className='title-content'>You chose</p>
+                </div>
+                <p>Would you rather {optionTwo}</p>
+                <div className="progress">
+                  <div className="progress-bar" style={{width: `${percentTwo}%`}}></div>
+                </div>
+                <p>{optionTwoVotes.length} out of {totalLength} votes</p>
               </div>
-              <p>{optionTwoVotes.length} out of {totalLength}</p>
             </div>
           }
         </div>  
