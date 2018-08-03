@@ -10,10 +10,6 @@ class Question extends Component {
 
   handleChange = (e) => {
     const answer = e.target.value
-    const { authedUser } = this.props
-    
-    console.log(answer)
-    console.log(Object.values(authedUser)[0])
 
     this.setState({ answer: answer })
   }

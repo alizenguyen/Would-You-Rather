@@ -33,7 +33,7 @@ class UserHome extends Component {
   render() {
 
     const { authedUser, unAnsweredQuestions, answeredQuestions } = this.props
-    const { showUnansweredQuestions, unAnsweredQuestionsEmpty, answeredQuestionsEmpty } = this.state
+    const { showUnansweredQuestions } = this.state
 
     if (authedUser === null) {
       return <Redirect to='/' />

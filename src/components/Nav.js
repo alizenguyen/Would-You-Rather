@@ -15,7 +15,7 @@ class Nav extends Component {
 
     return (
     <div className='full-nav'>
-      <img className='nav-logo' src={logo} />
+      <img className='nav-logo' alt='logo' src={logo} />
       <nav className='nav'>
         <ul>
           <Link to={'/home/' + authedUserID} className='nav-item'>

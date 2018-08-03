@@ -18,8 +18,7 @@ class UserChoice extends Component {
   //WILL SAVE SELECTED USER TO DATABASE
   saveUserChoice = (e, user) => {
     e.preventDefault();
-    console.log(user);
-    console.log(user.id)
+
     this.props.selectedUser(user)
       .then (() => this.setState({ userID: user.id }))
       .then (() => this.setState({ redirectToNewPage: true }))
@@ -118,9 +117,9 @@ class UserChoice extends Component {
           }}
         />
         <div className="info-box">
-          <img className="logo-image" src={logo} />
+          <img className="logo-image" alt="logo" src={logo} />
           <p className="tagline">Ask questions. Get answers. Earn points.</p>
-          <img className="world-image" src={world} />
+          <img className="world-image" alt="world" src={world} />
           <h3 className="signin-text">Please sign in to continue.</h3>
           <div className="dropdown">
             <button className="user-button dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -133,7 +132,7 @@ class UserChoice extends Component {
                     key={users[user].id}
                     //EVENT HANDLER TO SAVE USER
                     onClick={(e) => this.saveUserChoice(e, users[user], users[user].id)}>
-                    <img className="menu-avatar" src={users[user].avatarURL} /> 
+                    <img className="menu-avatar" alt="avatar" src={users[user].avatarURL} /> 
                     <a className='menu-name'> 
                       {users[user].name}
                     </a>

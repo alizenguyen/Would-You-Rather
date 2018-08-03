@@ -1,4 +1,4 @@
-import { GET_USERS, SAVE_QUESTION_ANSWER } from '../actions/users'
+import { GET_USERS } from '../actions/users'
 
 export default function user (state = {}, action) {
   switch(action.type) {
