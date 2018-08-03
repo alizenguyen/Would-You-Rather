@@ -2,28 +2,35 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import '../css/LeaderBoard.css'
 import Nav from './Nav'
+import crown from '../images/leader.png'
 
 class LeaderBoard extends Component {
   render() {
     const { userArray } = this.props
 
     return(
-      <div>
+      <div className="leader-full-body">
         <Nav />
+        <img className="crown-img" alt="crown" src={crown} /> 
+        <h2 className="leader-title">LEADER BOARD</h2>
         {userArray.map(user => (
           <div key={user.id} className="leader-item">
-            <div>
-              <img className="question-avatar" alt="user-avatar" src={user.avatarURL} /> 
+            <div className="row"> 
+              <div className="col-md-4">
+                <img className="leader-avatar" alt="user-avatar" src={user.avatarURL} /> 
+              </div>
+              <div className="col-md-5 leader-body">
+                <h3 className="leader-name">{user.name}</h3>
+                <p className="result-text" style={{marginTop: '15px'}}> Answered Questions: {user.answeredResults}</p>
+                <p className="result-text"> Queestions Asked:   {user.questionsResults}</p>
+              </div>
+              <div className="col-md-3 total-score">
+                <p> Total Score: </p>
+                <p>{user.ranking} </p>
+              </div>
             </div>
-            <div>
-              <h3 className="leader-name">{user.name}</h3>
-              <p> Answered Questions: {user.answeredResults}</p>
-              <p> Queestions Asked:   {user.questionsResults}</p>
-              <p> Total Score: {user.ranking} </p>
-            </div>
-          </div> 
+        </div>
         ))}
-        <div className="clearfix"></div>
       </div>
     )
   }
