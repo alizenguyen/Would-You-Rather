@@ -11,6 +11,8 @@ class UserHome extends Component {
   state = {
     loading: true,
     showUnansweredQuestions: true,
+    unAnsweredQuestionsEmpty: false,
+    AnsweredQuestionsEmpty: false,
   }
 
   renderAnsweredQuestions = () => {
@@ -22,6 +24,7 @@ class UserHome extends Component {
   }
 
   renderUnansweredQuestions = () => {
+
     if (this.state.showUnansweredQuestions === false) {
       this.setState(
         {showUnansweredQuestions: true}
@@ -29,10 +32,26 @@ class UserHome extends Component {
     } 
   }
 
+  //Will check when props are updated. Will trigger a state change, so the 'Out of Questions message' pop up.
+  componentWillReceiveProps = (props) => {
+    console.log('componentWillReceiveProps', props)
+    if (props.unAnsweredQuestions.length === 0) {
+      this.setState(
+        {unAnsweredQuestionsEmpty: true}
+      )
+    }
+
+    if (props.answeredQuestions.length === 0) {
+      this.setState(
+        {answeredQuestionsEmpty: true}
+      )
+    }
+  }
+
   render() {
 
     const { authedUser, unAnsweredQuestions, answeredQuestions } = this.props
-    const { showUnansweredQuestions } = this.state
+    const { showUnansweredQuestions, unAnsweredQuestionsEmpty, answeredQuestionsEmpty } = this.state
 
     if (authedUser === null) {
       return <Redirect to='/' />
@@ -45,6 +64,15 @@ class UserHome extends Component {
           <button className="userHome-question-buttons userHome-unanswer-btn" onClick={this.renderUnansweredQuestions}>QUESTIONS TO ANSWER</button>
           <button className="userHome-question-buttons userHome-answer-btn" onClick={this.renderAnsweredQuestions}>ANSWERED QUESTIONS</button>
         </div>
+
+        {showUnansweredQuestions === true && unAnsweredQuestionsEmpty
+          ? (<div>Out of Questions. Stay tuned. </div>)
+          : (<span></span>)}
+
+        {showUnansweredQuestions === false && answeredQuestions
+          ? (<div>Answer some questions to get on the leader board!</div>)
+          : (<span></span>)}
+
         <div>
           {showUnansweredQuestions === true ? (
             unAnsweredQuestions.map(question => (
