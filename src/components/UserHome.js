@@ -11,8 +11,6 @@ class UserHome extends Component {
   state = {
     loading: true,
     showUnansweredQuestions: true,
-    unAnsweredQuestionsEmpty: false,
-    AnsweredQuestionsEmpty: false,
   }
 
   renderAnsweredQuestions = () => {
@@ -32,22 +30,6 @@ class UserHome extends Component {
     } 
   }
 
-  //Will check when props are updated. Will trigger a state change, so the 'Out of Questions message' pop up.
-  componentWillReceiveProps = (props) => {
-    console.log('componentWillReceiveProps', props)
-    if (props.unAnsweredQuestions.length === 0) {
-      this.setState(
-        {unAnsweredQuestionsEmpty: true}
-      )
-    }
-
-    if (props.answeredQuestions.length === 0) {
-      this.setState(
-        {answeredQuestionsEmpty: true}
-      )
-    }
-  }
-
   render() {
 
     const { authedUser, unAnsweredQuestions, answeredQuestions } = this.props
@@ -65,11 +47,11 @@ class UserHome extends Component {
           <button className="userHome-question-buttons userHome-answer-btn" onClick={this.renderAnsweredQuestions}>ANSWERED QUESTIONS</button>
         </div>
 
-        {showUnansweredQuestions === true && unAnsweredQuestionsEmpty
-          ? (<div className='question-error'>Out of Questions. Stay tuned. </div>)
+        {showUnansweredQuestions === true && unAnsweredQuestions.length === 0
+          ? (<div className='question-error'>Out of Questions. Stay tuned or ask a question! </div>)
           : (<span></span>)}
 
-        {showUnansweredQuestions === false && answeredQuestionsEmpty
+        {showUnansweredQuestions === false && answeredQuestions.length === 0
           ? (<div className='question-error'>Answer some questions to get on the leader board!</div>)
           : (<span></span>)}
 
