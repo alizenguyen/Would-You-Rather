@@ -96,7 +96,7 @@ let questions = {
     author: 'erikluca',
     timestamp: 1489579767190,
     optionOne: {
-      votes: ['erikluca'],
+      votes: [],
       text: 'find $50 yourself',
     },
     optionTwo: {
@@ -113,7 +113,7 @@ let questions = {
       text: 'write JavaScript',
     },
     optionTwo: {
-      votes: ['erikluca'],
+      votes: [],
       text: 'write Swift'
     }
   },

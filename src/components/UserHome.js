@@ -52,7 +52,7 @@ class UserHome extends Component {
           : (<span></span>)}
 
         {showUnansweredQuestions === false && answeredQuestions.length === 0
-          ? (<div className='question-error'>Answer some questions to get on the leader board!</div>)
+          ? (<div className='question-error'>You haven't answered any questions. Answer some questions to move up the leader board!</div>)
           : (<span></span>)}
 
         <div>
