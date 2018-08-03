@@ -57,6 +57,8 @@
 
 .user-dropdown:hover {
   color: #ff9f1c;
+  background-color: #F4FFFD;
+  cursor: pointer;
 }
 
 .user-dropdown .menu-avatar {
