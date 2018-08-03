@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import '../css/LeaderBoard.css'
 import Nav from './Nav'
 import crown from '../images/leader.png'
 
 class LeaderBoard extends Component {
   render() {
-    const { userArray } = this.props
+    const { userArray, authedUser } = this.props
+
+    console.log(authedUser)
+
+    if (authedUser === null) {
+      return <Redirect to='/' />
+    }
 
     return(
       <div className="leader-full-body">
@@ -36,7 +43,7 @@ class LeaderBoard extends Component {
   }
 }
 
-function mapStateToProps ({ users }) {
+function mapStateToProps ({ users, authedUser }) {
 
   const userArray = Object.keys(users).map((user) => {
     const userInfo = {
@@ -57,9 +64,11 @@ function mapStateToProps ({ users }) {
   })
 
   console.log(userArray)
+  console.log(authedUser)
   
   return {
-    userArray,
+    authedUser,
+    userArray
   }
 }
 
