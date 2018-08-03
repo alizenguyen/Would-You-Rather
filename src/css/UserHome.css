@@ -35,3 +35,9 @@
   flex: 1;
   margin-left: 20px;
 }
+
+.question-error {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 50px; 
+}

@@ -66,11 +66,11 @@ class UserHome extends Component {
         </div>
 
         {showUnansweredQuestions === true && unAnsweredQuestionsEmpty
-          ? (<div>Out of Questions. Stay tuned. </div>)
+          ? (<div className='question-error'>Out of Questions. Stay tuned. </div>)
           : (<span></span>)}
 
         {showUnansweredQuestions === false && answeredQuestions
-          ? (<div>Answer some questions to get on the leader board!</div>)
+          ? (<div className='question-error'>Answer some questions to get on the leader board!</div>)
           : (<span></span>)}
 
         <div>
