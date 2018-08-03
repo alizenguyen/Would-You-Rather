@@ -9,8 +9,6 @@ class LeaderBoard extends Component {
   render() {
     const { userArray, authedUser } = this.props
 
-    console.log(authedUser)
-
     if (authedUser === null) {
       return <Redirect to='/' />
     }
@@ -62,9 +60,6 @@ function mapStateToProps ({ users, authedUser }) {
   }).sort((a,b) => {
     b.ranking - a.ranking
   })
-
-  console.log(userArray)
-  console.log(authedUser)
   
   return {
     authedUser,
