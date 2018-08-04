@@ -27,7 +27,7 @@ class Question extends Component {
                 <div className='title-user-choice'>
                   <p className='title-content'>You chose</p>
                 </div>
-                <p>Would you rather {optionOne} </p>
+                <p className='paragraph-text'>Would you rather {optionOne} </p>
                 <div className="progress">
                   <div className="progress-bar" style={{width: `${percentOne}%`}}></div>
                 </div>
@@ -35,7 +35,7 @@ class Question extends Component {
               </div>
               <br />
               <div className='not-user-choice'>
-                <p>Would you rather {optionTwo}</p>
+                <p className='paragraph-text'>Would you rather {optionTwo}</p>
                 <div className="progress">
                   <div className="progress-bar" style={{width: `${percentTwo}%`}}></div>
                 </div>
@@ -44,7 +44,7 @@ class Question extends Component {
             </div>
           : <div className='answered-div'> 
               <div className='not-user-choice'>
-                <p>Would you rather {optionOne} </p>
+                <p className='paragraph-text'>Would you rather {optionOne} </p>
                 <div className="progress">
                   <div className="progress-bar" style={{width: `${percentOne}%`}}></div>
                 </div>
@@ -55,7 +55,7 @@ class Question extends Component {
                 <div className='title-user-choice'>
                   <p className='title-content'>You chose</p>
                 </div>
-                <p>Would you rather {optionTwo}</p>
+                <p className='paragraph-text'>Would you rather {optionTwo}</p>
                 <div className="progress">
                   <div className="progress-bar" style={{width: `${percentTwo}%`}}></div>
                 </div>

@@ -36,6 +36,11 @@
   padding: 10px;
 }
 
+.paragraph-text {
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
 .title-user-choice {
   height: 80px;
   width: 80px;
