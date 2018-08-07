@@ -14,3 +14,9 @@
 The app begins on a login page where you will have the option to select a user from a precomposed list. 
 
 <img src="./src/images/login.gif" width="800">
+
+<img src="./src/images/user-home.gif" width="800">
+
+<img src="./src/images/new-qusetion.gif" width="800">
+
+<img src="./src/images/leaderboard.gif" width="800">
