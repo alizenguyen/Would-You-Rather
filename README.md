@@ -25,6 +25,8 @@ For answered questions, the user will be able to see the question, the two optio
 
 <img src="./src/images/user-home.gif" width="800">
 
+The user will also have the ability to ask his or her own questions. After clicking on 'New Question,' the application should show a form with the text 'Would You Rather' and inputs for creating the two options. Upon submitting the form, a new poll should be created, the user will be redirected to the user home page, and the new polling question should appear in the correct category on teh home page. 
+
 <img src="./src/images/new-question.gif" width="800">
 
 <img src="./src/images/leaderboard.gif" width="800">
