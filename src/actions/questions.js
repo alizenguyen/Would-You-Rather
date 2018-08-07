@@ -39,7 +39,9 @@ function saveQuestionAnswer ({ authedUser, qid, answer}) {
 
 export const savingQuestionAnswer = (qid, answer) => {
   return (dispatch, getState) => {
-    const { authedUser } = getState()
+    let { authedUser } = getState()
+
+    authedUser = Object.values(authedUser)[0]
 
     dispatch(saveQuestionAnswer({ authedUser, qid, answer }))
 

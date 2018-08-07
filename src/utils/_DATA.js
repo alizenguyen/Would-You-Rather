@@ -199,10 +199,10 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
     setTimeout(() => {
       users = {
         ...users,
-        [Object.values(authedUser)[0]]: {
-          ...users[Object.values(authedUser)[0]],
+        [authedUser]: {
+          ...users[authedUser],
           answers: {
-            ...users[Object.values(authedUser)[0]].answers,
+            ...users[authedUser].answers,
             [qid]: answer
           }
         }
