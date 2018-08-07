@@ -6,12 +6,14 @@ import Nav from './Nav'
 import crown from '../images/leader.png'
 
 class LeaderBoard extends Component {
+
   render() {
     const { userArray, authedUser } = this.props
 
     if (authedUser === null) {
       return <Redirect to='/' />
     }
+
 
     return(
       <div className="leader-full-body">
@@ -57,9 +59,11 @@ function mapStateToProps ({ users, authedUser }) {
     userInfo.ranking = ranking;
 
     return userInfo;
-  }).sort((a,b) => {
+  }).sort((a,b) => (
     b.ranking - a.ranking
-  })
+  ))
+
+  console.log(userArray)
   
   return {
     authedUser,
