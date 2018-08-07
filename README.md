@@ -11,9 +11,17 @@
 
 ## How it works & Demo
 
-The app begins on a login page where you will have the option to select a user from a precomposed list. 
+The app begins on a login page where you will have the option to select a user from a precomposed list. Once a user is chosen, the page will be redirected to the user homepage. 
 
 <img src="./src/images/login.gif" width="800">
+
+Once the user is authenticated, the user will be able to toggle between the user's unanswered question and answered questions on his or her homepage, which is located at the root. The unanswered questions are shown by default.
+
+To provide clarity, the chosen user's avatar will always be displayed in the nav bar. 
+
+For unanswered questions, the user will be able to see who asked the question, the question, and the two options to choose from. 
+
+For answered questions, the user will be able to see the question, the two options, the number of people who voted for that option, and what the user has chosen. 
 
 <img src="./src/images/user-home.gif" width="800">
 
