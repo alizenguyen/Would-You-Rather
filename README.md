@@ -10,3 +10,7 @@
 * start the development server with `npm start`
 
 ## How it works & Demo
+
+The app begins on a login page where you will have the option to select a user from a precomposed list. 
+
+<img src="./src/images/login.gif" width="800">
