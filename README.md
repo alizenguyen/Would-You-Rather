@@ -37,4 +37,8 @@ The user will also have the ability to ask his or her own questions. After click
 
 ### Leaderboard
 
+To bring in some healthy competition, the application contains a leaderboard that available via the /leaderboard route. Each user contains the user's name, user's avatar, number of questions asked, number of questions the user answered, and the total score.
+
+Users are in order of descending order based on the sum of questions asked and questions answered. The more questions the user asks and answers, the higher up the user moves.
+
 <img src="./src/images/leaderboard.gif" width="800">
