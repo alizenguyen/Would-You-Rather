@@ -11,9 +11,13 @@
 
 ## How it works & Demo
 
+### Login
+
 The app begins on a login page where you will have the option to select a user from a precomposed list. Once a user is chosen, the page will be redirected to the user homepage. 
 
 <img src="./src/images/login.gif" width="800">
+
+### User Homepage
 
 Once the user is authenticated, the user will be able to toggle between the user's unanswered question and answered questions on his or her homepage, which is located at the root. The unanswered questions are shown by default.
 
@@ -25,8 +29,12 @@ For answered questions, the user will be able to see the question, the two optio
 
 <img src="./src/images/user-home.gif" width="800">
 
+### New Question
+
 The user will also have the ability to ask his or her own questions. After clicking on 'New Question,' the application should show a form with the text 'Would You Rather' and inputs for creating the two options. Upon submitting the form, a new poll should be created, the user will be redirected to the user home page, and the new polling question should appear in the correct category on teh home page. 
 
 <img src="./src/images/new-question.gif" width="800">
+
+### Leaderboard
 
 <img src="./src/images/leaderboard.gif" width="800">
