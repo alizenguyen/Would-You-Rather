@@ -21,10 +21,10 @@ class Nav extends Component {
           <Link to={'/home/' + authedUserID} className='nav-item'>
             HOME
           </Link>
-          <Link to={'/newquestion'} className='nav-item'> 
+          <Link to={'/add'} className='nav-item'> 
             NEW QUESTION
           </Link>
-          <Link to={'/leader'} className='nav-item'>
+          <Link to={'/leaderboard'} className='nav-item'>
             LEADER BOARD
           </Link>
           <Link to={'/'} className='nav-item' id='left-nav' onClick={this.handleLogOut}>
